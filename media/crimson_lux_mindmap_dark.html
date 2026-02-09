@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crimson Lux - Mind Map & Plan d'Action</title>
+    <style>
+        /* Styles généraux */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            background-color: #1a1a1a;
+            padding: 20px;
+        }
+        
+        /* Styles pour l'impression */
+        @media print {
+            body {
+                background-color: #1a1a1a !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                color-adjust: exact;
+            }
+            
+            .container, .section, .subsection, .task-group {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+            
+            h1, h2, h3 {
+                page-break-after: avoid;
+            }
+            
+            .footer {
+                position: fixed;
+                bottom: 0;
+            }
+        }
+        
+        /* Conteneur principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #222;
+            border-radius: 5px;
+            padding: 20px;
+            position: relative;
+        }
+        
+        /* En-tête */
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            background-color: #2d1a1a;
+            border-radius: 5px;
+            padding: 15px;
+        }
+        
+        .header h1 {
+            color: #ff4d4d;
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+        
+        .header p {
+            color: #ccc;
+            font-size: 1em;
+        }
+        
+        /* Sections principales */
+        .section-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #333;
+            border-radius: 5px;
+            border-left: 3px solid #ff4d4d;
+        }
+        
+        .section-icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+            color: #ff4d4d;
+        }
+        
+        .section-name {
+            font-size: 1.3em;
+            color: #ff4d4d;
+            font-weight: 600;
+        }
+        
+        /* Architecture du projet */
+        .architecture {
+            margin-bottom: 30px;
+        }
+        
+        .architecture-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #2d1a2d;
+            border-radius: 5px;
+        }
+        
+        .architecture-icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+            color: #ff69b4;
+        }
+        
+        .architecture-name {
+            font-size: 1.3em;
+            color: #ff69b4;
+            font-weight: 600;
+        }
+        
+        .architecture-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        
+        /* Plan d'action */
+        .plan {
+            margin-bottom: 30px;
+        }
+        
+        .plan-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #1a2d1a;
+            border-radius: 5px;
+        }
+        
+        .plan-icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+            color: #4dff4d;
+        }
+        
+        .plan-name {
+            font-size: 1.3em;
+            color: #4dff4d;
+            font-weight: 600;
+        }
+        
+        .plan-content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        /* Sous-sections */
+        .subsection {
+            background-color: #2a2a2a;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .subsection h3 {
+            color: #ff4d4d;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #444;
+            padding-bottom: 5px;
+        }
+        
+        /* Listes */
+        ul {
+            list-style-type: none;
+            padding-left: 5px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 15px;
+            font-size: 0.9em;
+        }
+        
+        li:before {
+            content: "•";
+            color: #ff4d4d;
+            position: absolute;
+            left: 0;
+        }
+        
+        /* Sous-listes */
+        li ul {
+            margin-top: 5px;
+            margin-left: 10px;
+        }
+        
+        li ul li {
+            margin-bottom: 5px;
+        }
+        
+        li ul li:before {
+            content: "◦";
+            color: #ccc;
+        }
+        
+        /* Étapes numérotées */
+        ol {
+            list-style-type: none;
+            counter-reset: item;
+            padding-left: 5px;
+        }
+        
+        ol > li {
+            counter-increment: item;
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        ol > li:before {
+            content: counter(item) ".";
+            color: #ff4d4d;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        /* Sections spécifiques */
+        .fondations {
+            background-color: #2d1a1a;
+            border-left: 3px solid #ff4d4d;
+        }
+        
+        .repetitives {
+            background-color: #2d2d1a;
+            border-left: 3px solid #ffff4d;
+        }
+        
+        .automatiser {
+            background-color: #1a2d2d;
+            border-left: 3px solid #4dffff;
+        }
+        
+        .prevoir {
+            background-color: #1a1a2d;
+            border-left: 3px solid #4d4dff;
+        }
+        
+        .strategiques {
+            background-color: #2d1a2d;
+            border-left: 3px solid #ff4dff;
+        }
+        
+        /* Pied de page */
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #888;
+            font-size: 0.8em;
+            border-top: 1px solid #444;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>CRIMSON LUX</h1>
+            <p>Mind Map & Plan d'Action</p>
+        </div>
+        
+        <!-- ARCHITECTURE DU PROJET -->
+        <div class="architecture">
+            <div class="architecture-title">
+                <div class="architecture-icon">💠</div>
+                <div class="architecture-name">ARCHITECTURE DU PROJET</div>
+            </div>
+            
+            <div class="architecture-content">
+                <!-- Identité & Artistique -->
+                <div class="subsection">
+                    <h3>🔴 Identité & Artistique</h3>
+                    <ul>
+                        <li>Thématique: NSFW + univers narratif sensuel</li>
+                        <li>Style principal: Semi-réaliste</li>
+                        <li>Styles secondaires: Réaliste / Anime</li>
+                        <li>Structure narrative:
+                            <ul>
+                                <li>Arcs indépendants par personnage</li>
+                                <li>Crossovers ponctuels</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Production de Contenu -->
+                <div class="subsection">
+                    <h3>🔴 Production de Contenu</h3>
+                    <ul>
+                        <li>Volume mensuel: 50-100 images</li>
+                        <li>Format différencié selon paliers (5€, 17€, 25€)</li>
+                        <li>Scénario implicite sur certains visuels</li>
+                    </ul>
+                </div>
+                
+                <!-- Outils IA & Automatisation -->
+                <div class="subsection">
+                    <h3>🔴 Outils IA & Automatisation</h3>
+                    <ul>
+                        <li>Moteur: Stable Diffusion XL uniquement</li>
+                        <li>Génération d'images: 100% manuelle</li>
+                        <li>Automatisation:
+                            <ul>
+                                <li>N8N + SillyTavern pour réponses</li>
+                                <li>Notion comme base de données</li>
+                            </ul>
+                        </li>
+                        <li>BD évolutive de textes/captions</li>
+                    </ul>
+                </div>
+                
+                <!-- Stratégie Réseaux Sociaux -->
+                <div class="subsection">
+                    <h3>🔴 Stratégie Réseaux Sociaux</h3>
+                    <ul>
+                        <li>Instagram/TikTok: visuels clean, reels</li>
+                        <li>Twitter: contenu plus suggestif</li>
+                        <li>Publication via N8N (planification)</li>
+                        <li>Narration par personnages</li>
+                    </ul>
+                </div>
+                
+                <!-- Structure d'Entreprise -->
+                <div class="subsection">
+                    <h3>🔴 Structure d'Entreprise</h3>
+                    <ul>
+                        <li>Modèle: Crimson Lux comme maison mère</li>
+                        <li>Statuts:
+                            <ul>
+                                <li>Démarrage: auto-entrepreneur</li>
+                                <li>Transition future: SASU ou SAS</li>
+                            </ul>
+                        </li>
+                        <li>Objectifs financiers:
+                            <ul>
+                                <li>2000€ net/mois personnel</li>
+                                <li>50-70% dividendes en fin d'année</li>
+                            </ul>
+                        </li>
+                        <li>Compta: automatisation partielle</li>
+                        <li>Fidélisation: codes réduction périodiques</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- PLAN D'ACTION STRUCTURÉ -->
+        <div class="plan">
+            <div class="plan-title">
+                <div class="plan-icon">✅</div>
+                <div class="plan-name">PLAN D'ACTION STRUCTURÉ</div>
+            </div>
+            
+            <!-- Étapes Fondations -->
+            <div class="subsection fondations">
+                <h3>🔴 ÉTAPES FONDATIONS (À FAIRE EN PREMIER)</h3>
+                <ol>
+                    <li>Définir les fiches personnages principales (x5)</li>
+                    <li>Créer une base Notion avec:
+                        <ul>
+                            <li>Captions génériques classées par thème/personnalité</li>
+                            <li>Lore évolutif (notes privées)</li>
+                            <li>Table de suivi des publications</li>
+                        </ul>
+                    </li>
+                    <li>Organiser les dossiers images localement
+                        <ul>
+                            <li>Par personnage, par usage (Patreon, Insta, etc.)</li>
+                        </ul>
+                    </li>
+                    <li>Configurer N8N
+                        <ul>
+                            <li>Noeud IA pour réponses via Notion + Silly</li>
+                            <li>Automatisation envoi email / planification</li>
+                        </ul>
+                    </li>
+                    <li>Rédiger le "code narratif" (structure de l'histoire cachée)</li>
+                </ol>
+            </div>
+            
+            <div class="plan-content">
+                <!-- Tâches Répétitives -->
+                <div class="subsection repetitives">
+                    <h3>🔴 TÂCHES RÉPÉTITIVES</h3>
+                    <ul>
+                        <li>Génération manuelle d'images (planning hebdo)</li>
+                        <li>Choix des images à publier (filtrage + nommage)</li>
+                        <li>Publication hebdo sur tous réseaux</li>
+                        <li>Vérification/réponse aux messages et commentaires</li>
+                        <li>Mise à jour base Notion</li>
+                        <li>Checkpoint financier mensuel</li>
+                    </ul>
+                </div>
+                
+                <!-- Tâches à Automatiser -->
+                <div class="subsection automatiser">
+                    <h3>🔴 TÂCHES À AUTOMATISER</h3>
+                    <ul>
+                        <li>Publication sociale via N8N (API tierces)</li>
+                        <li>Génération de réponses DM/commentaires simples</li>
+                        <li>Suivi de publication dans base Notion</li>
+                        <li>Backup local/cloud contenus et stats</li>
+                        <li>Script .bat de lancement écosystème</li>
+                    </ul>
+                </div>
+                
+                <!-- Étapes à Prévoir -->
+                <div class="subsection prevoir">
+                    <h3>🔴 ÉTAPES À PRÉVOIR</h3>
+                    <ul>
+                        <li>Création de vidéos (reels, puis via SD)</li>
+                        <li>Template de "fiche mensuelle lore" (abonnés 25€)</li>
+                        <li>Dashboard financier (Notion ou Sheets)</li>
+                        <li>Test mécaniques de réduction (codes limités)</li>
+                        <li>Veille algorithmique (changements réseaux)</li>
+                    </ul>
+                </div>
+                
+                <!-- Étapes Stratégiques -->
+                <div class="subsection strategiques">
+                    <h3>🔴 ÉTAPES STRATÉGIQUES</h3>
+                    <ul>
+                        <li>Rythme de publication cohérent + effet teasing</li>
+                        <li>Création de rareté/attente (tier 25€)</li>
+                        <li>Cohérence visuelle globale</li>
+                        <li>Maintien du contrôle créatif malgré l'automatisation</li>
+                        <li>Préparation passage en société + compta simplifiée</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Crimson Lux - Document de planification stratégique - Généré le 19 mai 2025</p>
+        </div>
+    </div>
+</body>
+</html>

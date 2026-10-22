@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Story Engine - Moteur expérimental de génération narrative multi-agents</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Portfolio</a>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="crimson-lux.html">Crimson Lux</a></li>
+                        <li><a href="yamino-lux.html">Yamino Lux</a></li>
+                        <li><a href="abyssal-dream-records.html">Abyssal Dream Records</a></li>
+                        <li><a href="game-translator-ai.html">Game Translator AI</a></li>
+                        <li><a href="ai-story-engine.html">AI Story Engine</a></li>
+                    </ul>
+                </nav>
+                <div class="nav-actions">
+                    <button class="theme-toggle">☀️ Clair</button>
+                    <button class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-menu">
+            <div class="container">
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="crimson-lux.html">Crimson Lux</a></li>
+                    <li><a href="yamino-lux.html">Yamino Lux</a></li>
+                    <li><a href="abyssal-dream-records.html">Abyssal Dream Records</a></li>
+                    <li><a href="game-translator-ai.html">Game Translator AI</a></li>
+                    <li><a href="ai-story-engine.html">AI Story Engine</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="section">
+            <div class="container">
+
+                <!-- ========================
+                     HERO
+                     ======================== -->
+                <div class="gta-hero">
+                    <div class="gta-hero-icon">
+                        <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true">
+                            <rect width="64" height="64" rx="16" fill="url(#ase-icon-grad)" />
+                            <text x="32" y="44" text-anchor="middle" font-size="32" font-family="sans-serif">📖</text>
+                            <defs>
+                                <linearGradient id="ase-icon-grad" x1="0" y1="0" x2="64" y2="64"
+                                    gradientUnits="userSpaceOnUse">
+                                    <stop offset="0%" stop-color="#0ea5e9" />
+                                    <stop offset="100%" stop-color="#6366f1" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h1 class="section-title" style="margin-bottom: 0.5rem;">AI Story Engine</h1>
+                    <p class="gta-subtitle">Moteur expérimental de génération narrative multi-agents</p>
+                    <span class="gta-status-badge">Prototype expérimental — en développement</span>
+                </div>
+
+                <!-- ========================
+                     PRÉSENTATION
+                     ======================== -->
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h3>Présentation</h3>
+                        <p>AI Story Engine est un projet expérimental visant à organiser la création d'histoires
+                            complexes à l'aide de plusieurs agents IA spécialisés. Plutôt que de confier l'intégralité
+                            de l'écriture à un seul modèle en une seule étape, le système répartit le travail entre
+                            différentes tâches : préparation du récit, organisation des chapitres, rédaction,
+                            vérification de cohérence et corrections.</p>
+                    </div>
+                    <div class="content-card">
+                        <h3>Objectifs</h3>
+                        <ul>
+                            <li>Améliorer la cohérence narrative sur les récits longs</li>
+                            <li>Maintenir la continuité des événements entre les chapitres</li>
+                            <li>Gérer le contexte narratif via une mémoire structurée</li>
+                            <li>Orchestrer plusieurs tâches spécialisées depuis Python</li>
+                            <li>Expérimenter la coopération d'agents IA sur une tâche créative</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- ========================
+                     TECHNOLOGIES
+                     ======================== -->
+                <div class="section" style="padding-top: 0;">
+                    <h2 style="text-align: center; margin-bottom: 1.5rem;">Technologies</h2>
+                    <div class="gta-tags">
+                        <span class="gta-tag">Python</span>
+                        <span class="gta-tag">Modèles de langage (LLM)</span>
+                        <span class="gta-tag">Prompt engineering</span>
+                        <span class="gta-tag">JSON</span>
+                    </div>
+                </div>
+
+                <!-- ========================
+                     ARCHITECTURE MULTI-AGENTS (schéma SVG)
+                     ======================== -->
+                <div class="section" style="padding-top: 0;">
+                    <h2 style="text-align: center; margin-bottom: 0.75rem;">Architecture multi-agents</h2>
+                    <p
+                        style="text-align: center; color: var(--muted); max-width: 680px; margin: 0 auto 2rem; font-size: 0.95rem;">
+                        Un orchestrateur Python pilote le déroulement du processus selon une feuille de route et des
+                        règles prédéfinies.
+                        Il détermine à chaque étape quelle tâche doit être exécutée et oriente le travail vers l'agent
+                        spécialisé approprié.
+                    </p>
+
+                    <!-- Schéma SVG de l'architecture -->
+                    <div class="ase-schema-wrapper">
+                        <svg class="ase-arch-svg" viewBox="0 0 720 460" xmlns="http://www.w3.org/2000/svg" role="img"
+                            aria-label="Schéma de l'architecture multi-agents du AI Story Engine">
+
+                            <!-- Définitions -->
+                            <defs>
+                                <linearGradient id="orch-grad" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stop-color="#6366f1" />
+                                    <stop offset="100%" stop-color="#4f46e5" />
+                                </linearGradient>
+                                <linearGradient id="agent-grad" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stop-color="#1e293b" />
+                                    <stop offset="100%" stop-color="#0f172a" />
+                                </linearGradient>
+                                <linearGradient id="mem-grad" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stop-color="#0c4a6e" />
+                                    <stop offset="100%" stop-color="#0369a1" />
+                                </linearGradient>
+                                <linearGradient id="valid-grad" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stop-color="#1c3a1c" />
+                                    <stop offset="100%" stop-color="#15803d" />
+                                </linearGradient>
+                                <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                                    <path d="M0,0 L0,6 L8,3 z" fill="#6366f1" opacity="0.7" />
+                                </marker>
+                                <marker id="arrow-green" markerWidth="8" markerHeight="8" refX="6" refY="3"
+                                    orient="auto">
+                                    <path d="M0,0 L0,6 L8,3 z" fill="#22c55e" opacity="0.8" />
+                                </marker>
+                                <marker id="arrow-blue" markerWidth="8" markerHeight="8" refX="6" refY="3"
+                                    orient="auto">
+                                    <path d="M0,0 L0,6 L8,3 z" fill="#0ea5e9" opacity="0.8" />
+                                </marker>
+                                <filter id="glow">
+                                    <feGaussianBlur stdDeviation="3" result="blur" />
+                                    <feMerge>
+                                        <feMergeNode in="blur" />
+                                        <feMergeNode in="SourceGraphic" />
+                                    </feMerge>
+                                </filter>
+                            </defs>
+
+                            <!-- ── ORCHESTRATEUR (centre haut) ── -->
+                            <rect x="235" y="20" width="250" height="70" rx="12" fill="url(#orch-grad)" stroke="#818cf8"
+                                stroke-width="1.5" />
+                            <text x="360" y="50" text-anchor="middle" fill="white" font-size="13" font-weight="700"
+                                font-family="Inter, sans-serif">Orchestrateur Python</text>
+                            <text x="360" y="68" text-anchor="middle" fill="#c7d2fe" font-size="10"
+                                font-family="Inter, sans-serif">Feuille de route · Règles · Séquencement</text>
+
+                            <!-- ── AGENTS (ligne horizontale) ── -->
+                            <!-- Préparation -->
+                            <rect x="20" y="155" width="130" height="60" rx="10" fill="url(#agent-grad)"
+                                stroke="#475569" stroke-width="1.2" />
+                            <text x="85" y="180" text-anchor="middle" fill="#cbd5e1" font-size="10" font-weight="600"
+                                font-family="Inter, sans-serif">Préparation</text>
+                            <text x="85" y="196" text-anchor="middle" fill="#64748b" font-size="9"
+                                font-family="Inter, sans-serif">Structure du récit</text>
+
+                            <!-- Organisation -->
+                            <rect x="170" y="155" width="130" height="60" rx="10" fill="url(#agent-grad)"
+                                stroke="#475569" stroke-width="1.2" />
+                            <text x="235" y="180" text-anchor="middle" fill="#cbd5e1" font-size="10" font-weight="600"
+                                font-family="Inter, sans-serif">Organisation</text>
+                            <text x="235" y="196" text-anchor="middle" fill="#64748b" font-size="9"
+                                font-family="Inter, sans-serif">Chapitres</text>
+
+                            <!-- Rédaction -->
+                            <rect x="320" y="155" width="130" height="60" rx="10" fill="url(#agent-grad)"
+                                stroke="#6366f1" stroke-width="1.5" filter="url(#glow)" />
+                            <text x="385" y="180" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="600"
+                                font-family="Inter, sans-serif">Rédaction</text>
+                            <text x="385" y="196" text-anchor="middle" fill="#64748b" font-size="9"
+                                font-family="Inter, sans-serif">Génération du texte</text>
+
+                            <!-- Vérification -->
+                            <rect x="470" y="155" width="130" height="60" rx="10" fill="url(#valid-grad)"
+                                stroke="#22c55e" stroke-width="1.2" />
+                            <text x="535" y="180" text-anchor="middle" fill="#bbf7d0" font-size="10" font-weight="600"
+                                font-family="Inter, sans-serif">Vérification</text>
+                            <text x="535" y="196" text-anchor="middle" fill="#64748b" font-size="9"
+                                font-family="Inter, sans-serif">Cohérence narrative</text>
+
+                            <!-- Correction -->
+                            <rect x="620" y="155" width="90" height="60" rx="10" fill="url(#agent-grad)"
+                                stroke="#475569" stroke-width="1.2" />
+                            <text x="665" y="180" text-anchor="middle" fill="#cbd5e1" font-size="10" font-weight="600"
+                                font-family="Inter, sans-serif">Correction</text>
+                            <text x="665" y="196" text-anchor="middle" fill="#64748b" font-size="9"
+                                font-family="Inter, sans-serif">Retour agent</text>
+
+                            <!-- ── MÉMOIRE NARRATIVE (bas centre) ── -->
+                            <rect x="240" y="330" width="240" height="65" rx="12" fill="url(#mem-grad)" stroke="#38bdf8"
+                                stroke-width="1.5" />
+                            <text x="360" y="358" text-anchor="middle" fill="white" font-size="12" font-weight="700"
+                                font-family="Inter, sans-serif">Mémoire narrative</text>
+                            <text x="360" y="376" text-anchor="middle" fill="#7dd3fc" font-size="10"
+                                font-family="Inter, sans-serif">Nœuds · Relations · Contexte</text>
+
+                            <!-- ── SAUVEGARDE (bas droite) ── -->
+                            <rect x="530" y="330" width="160" height="65" rx="10" fill="#1c1917" stroke="#57534e"
+                                stroke-width="1.2" />
+                            <text x="610" y="358" text-anchor="middle" fill="#d6d3d1" font-size="11" font-weight="600"
+                                font-family="Inter, sans-serif">💾 Sauvegarde</text>
+                            <text x="610" y="376" text-anchor="middle" fill="#78716c" font-size="9"
+                                font-family="Inter, sans-serif">Chapitre + note mémoire</text>
+
+                            <!-- ── CONNEXIONS ── -->
+                            <!-- Orchestrateur → Agents (flèches verticales) -->
+                            <line x1="360" y1="90" x2="85" y2="155" stroke="#6366f1" stroke-width="1.2"
+                                stroke-dasharray="4,3" opacity="0.5" marker-end="url(#arrow)" />
+                            <line x1="360" y1="90" x2="235" y2="155" stroke="#6366f1" stroke-width="1.2"
+                                stroke-dasharray="4,3" opacity="0.5" marker-end="url(#arrow)" />
+                            <line x1="360" y1="90" x2="385" y2="155" stroke="#6366f1" stroke-width="1.8" opacity="0.8"
+                                marker-end="url(#arrow)" />
+                            <line x1="360" y1="90" x2="535" y2="155" stroke="#6366f1" stroke-width="1.2"
+                                stroke-dasharray="4,3" opacity="0.5" marker-end="url(#arrow)" />
+                            <line x1="360" y1="90" x2="665" y2="155" stroke="#6366f1" stroke-width="1.2"
+                                stroke-dasharray="4,3" opacity="0.5" marker-end="url(#arrow)" />
+
+                            <!-- Rédaction ↔ Mémoire -->
+                            <line x1="385" y1="215" x2="360" y2="330" stroke="#0ea5e9" stroke-width="1.5" opacity="0.7"
+                                marker-end="url(#arrow-blue)" />
+
+                            <!-- Vérification → Mémoire (consultation) -->
+                            <line x1="500" y1="215" x2="450" y2="330" stroke="#0ea5e9" stroke-width="1.2"
+                                stroke-dasharray="5,3" opacity="0.5" marker-end="url(#arrow-blue)" />
+
+                            <!-- Vérification → Correction (retour) -->
+                            <line x1="600" y1="185" x2="620" y2="185" stroke="#f59e0b" stroke-width="1.3" opacity="0.7"
+                                marker-end="url(#arrow)" />
+
+                            <!-- Correction → Rédaction (boucle retour) -->
+                            <path d="M665,215 Q665,270 385,270 Q385,270 385,215" fill="none" stroke="#f59e0b"
+                                stroke-width="1.3" stroke-dasharray="5,3" opacity="0.6" marker-end="url(#arrow)" />
+
+                            <!-- Vérification OK → Sauvegarde -->
+                            <line x1="535" y1="215" x2="600" y2="330" stroke="#22c55e" stroke-width="1.5" opacity="0.8"
+                                marker-end="url(#arrow-green)" />
+
+                            <!-- ── LÉGENDES petites ── -->
+                            <text x="600" y="265" text-anchor="middle" fill="#f59e0b" font-size="9"
+                                font-family="Inter, sans-serif" opacity="0.9">retour corrections</text>
+                            <text x="455" y="300" text-anchor="middle" fill="#0ea5e9" font-size="9"
+                                font-family="Inter, sans-serif" opacity="0.8">consultation</text>
+                            <text x="580" y="295" text-anchor="middle" fill="#22c55e" font-size="9"
+                                font-family="Inter, sans-serif" opacity="0.9">validé ✓</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- ========================
+                     MÉMOIRE NARRATIVE EN NŒUDS
+                     ======================== -->
+                <div class="section" style="padding-top: 0;">
+                    <h2 style="text-align: center; margin-bottom: 0.75rem;">Mémoire narrative structurée en nœuds</h2>
+                    <p
+                        style="text-align: center; color: var(--muted); max-width: 680px; margin: 0 auto 2rem; font-size: 0.95rem;">
+                        Les informations importantes sont condensées en nœuds reliés par des relations. Cette structure
+                        sert à organiser les éléments du récit et leurs liens. Elle est principalement gérée par le
+                        prompting — ce n'est pas une base de données graphique spécialisée.
+                    </p>
+
+                    <div class="ase-memory-layout">
+                        <!-- Explication textuelle -->
+                        <div class="content-card">
+                            <h3>Principe des nœuds</h3>
+                            <p style="margin-bottom: 1.25rem;">Chaque nœud contient une information condensée issue du
+                                récit. Les relations entre nœuds permettent de représenter les liens logiques entre ces
+                                informations.</p>
+                            <ul>
+                                <li>Maintenir la continuité des personnages et des événements</li>
+                                <li>Fournir un contexte structuré aux agents de génération</li>
+                                <li>Permettre à l'agent de vérification de détecter les incohérences</li>
+                            </ul>
+                        </div>
+
+                        <!-- Schéma SVG des nœuds -->
+                        <div class="content-card ase-node-card">
+                            <h3 style="margin-bottom: 1.25rem;">Exemple pédagogique</h3>
+                            <svg class="ase-node-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg"
+                                role="img"
+                                aria-label="Exemple de réseau de nœuds : un couteau utilisé pour couper une tomate">
+                                <defs>
+                                    <linearGradient id="node1-g" x1="0" y1="0" x2="1" y2="1">
+                                        <stop offset="0%" stop-color="#312e81" />
+                                        <stop offset="100%" stop-color="#4338ca" />
+                                    </linearGradient>
+                                    <linearGradient id="node2-g" x1="0" y1="0" x2="1" y2="1">
+                                        <stop offset="0%" stop-color="#0c4a6e" />
+                                        <stop offset="100%" stop-color="#0369a1" />
+                                    </linearGradient>
+                                    <linearGradient id="node3-g" x1="0" y1="0" x2="1" y2="1">
+                                        <stop offset="0%" stop-color="#1c3a1c" />
+                                        <stop offset="100%" stop-color="#166534" />
+                                    </linearGradient>
+                                    <marker id="node-arrow" markerWidth="7" markerHeight="7" refX="5" refY="3"
+                                        orient="auto">
+                                        <path d="M0,0 L0,6 L7,3 z" fill="#94a3b8" />
+                                    </marker>
+                                </defs>
+
+                                <!-- Connexions -->
+                                <line x1="95" y1="80" x2="160" y2="130" stroke="#475569" stroke-width="1.5"
+                                    marker-end="url(#node-arrow)" />
+                                <line x1="225" y1="80" x2="175" y2="130" stroke="#475569" stroke-width="1.5"
+                                    marker-end="url(#node-arrow)" />
+
+                                <!-- Nœud 1 : couteau -->
+                                <rect x="20" y="44" width="150" height="58" rx="10" fill="url(#node1-g)"
+                                    stroke="#818cf8" stroke-width="1.2" />
+                                <text x="95" y="67" text-anchor="middle" fill="#c7d2fe" font-size="9"
+                                    font-family="Inter, sans-serif" font-weight="600">NŒUD 1</text>
+                                <text x="95" y="84" text-anchor="middle" fill="white" font-size="11"
+                                    font-family="Inter, sans-serif">Un couteau</text>
+
+                                <!-- Nœud 2 : tomate -->
+                                <rect x="150" y="44" width="150" height="58" rx="10" fill="url(#node2-g)"
+                                    stroke="#38bdf8" stroke-width="1.2" />
+                                <text x="225" y="67" text-anchor="middle" fill="#7dd3fc" font-size="9"
+                                    font-family="Inter, sans-serif" font-weight="600">NŒUD 2</text>
+                                <text x="225" y="84" text-anchor="middle" fill="white" font-size="11"
+                                    font-family="Inter, sans-serif">Couper une tomate</text>
+
+                                <!-- Nœud relation -->
+                                <rect x="60" y="137" width="200" height="52" rx="10" fill="url(#node3-g)"
+                                    stroke="#22c55e" stroke-width="1.2" />
+                                <text x="160" y="157" text-anchor="middle" fill="#bbf7d0" font-size="9"
+                                    font-family="Inter, sans-serif" font-weight="600">RELATION</text>
+                                <text x="160" y="174" text-anchor="middle" fill="white" font-size="9.5"
+                                    font-family="Inter, sans-serif">Le couteau sert à couper la tomate</text>
+                            </svg>
+                            <p style="font-size: 0.8rem; color: var(--muted); margin-top: 0.75rem; text-align: center;">
+                                Exemple illustratif — la structure réelle est gérée par prompting</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ========================
+                     CYCLE DE GÉNÉRATION
+                     ======================== -->
+                <div class="section" style="padding-top: 0;">
+                    <h2 style="text-align: center; margin-bottom: 0.75rem;">Cycle de génération d'un chapitre</h2>
+                    <p
+                        style="text-align: center; color: var(--muted); max-width: 680px; margin: 0 auto 2rem; font-size: 0.95rem;">
+                        Le traitement d'un chapitre suit plusieurs étapes enchaînées. Toutes ne sont pas encore
+                        entièrement automatisées : le projet est en cours de développement.
+                    </p>
+                    <div class="gta-steps">
+                        <div class="gta-step">
+                            <div class="gta-step-number">1</div>
+                            <div class="gta-step-content">
+                                <h4>Planification</h4>
+                                <p>Le système suit la feuille de route définie pour le récit afin de déterminer le
+                                    chapitre à traiter.</p>
+                            </div>
+                        </div>
+                        <div class="gta-step">
+                            <div class="gta-step-number">2</div>
+                            <div class="gta-step-content">
+                                <h4>Exécution</h4>
+                                <p>L'orchestrateur Python applique les règles prédéfinies et détermine la prochaine
+                                    tâche à exécuter.</p>
+                            </div>
+                        </div>
+                        <div class="gta-step">
+                            <div class="gta-step-number">3</div>
+                            <div class="gta-step-content">
+                                <h4>Génération</h4>
+                                <p>Un agent spécialisé réalise sa tâche (préparation, organisation, rédaction…) en
+                                    s'appuyant sur des prompts dédiés.</p>
+                            </div>
+                        </div>
+                        <div class="gta-step">
+                            <div class="gta-step-number">4</div>
+                            <div class="gta-step-content">
+                                <h4>Contexte narratif</h4>
+                                <p>Les informations pertinentes sont organisées et conservées dans la mémoire narrative
+                                    structurée en nœuds.</p>
+                            </div>
+                        </div>
+                        <div class="gta-step">
+                            <div class="gta-step-number">5</div>
+                            <div class="gta-step-content">
+                                <h4>Vérification</h4>
+                                <p>Un agent compare le chapitre avec la mémoire narrative afin de détecter d'éventuelles
+                                    incohérences.</p>
+                            </div>
+                        </div>
+                        <div class="gta-step">
+                            <div class="gta-step-number">6</div>
+                            <div class="gta-step-content">
+                                <h4>Corrections</h4>
+                                <p>Si des problèmes sont détectés, des remarques sont transmises à l'agent rédacteur
+                                    pour guider les corrections.</p>
+                            </div>
+                        </div>
+                        <div class="gta-step">
+                            <div class="gta-step-number">7</div>
+                            <div class="gta-step-content">
+                                <h4>Validation</h4>
+                                <p>Une fois le chapitre accepté, il est sauvegardé et son achèvement est consigné dans
+                                    la mémoire temporaire. Le processus continue selon la feuille de route.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ========================
+                     PYTHON & PROMPT ENGINEERING
+                     ======================== -->
+                <div class="section" style="padding-top: 0;">
+                    <h2 style="text-align: center; margin-bottom: 2rem;">Répartition des responsabilités</h2>
+                    <div class="content-grid">
+                        <div class="content-card">
+                            <div class="gta-feature-icon">🐍</div>
+                            <h3>Python — Pilotage du processus</h3>
+                            <ul>
+                                <li>Gestion du déroulement des étapes</li>
+                                <li>Application des règles prédéfinies</li>
+                                <li>Orchestration des tâches spécialisées</li>
+                                <li>Communication avec les modèles d'IA</li>
+                                <li>Gestion de l'avancement par chapitre</li>
+                            </ul>
+                        </div>
+                        <div class="content-card">
+                            <div class="gta-feature-icon">✍️</div>
+                            <h3>Prompt engineering — Comportement des agents</h3>
+                            <ul>
+                                <li>Définition du comportement attendu de chaque agent</li>
+                                <li>Instructions spécifiques à chaque tâche</li>
+                                <li>Encadrement de la génération narrative</li>
+                                <li>Consignes de vérification et de correction</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p
+                        style="text-align: center; color: var(--muted); margin-top: 1.5rem; font-size: 0.9rem; max-width: 650px; margin-left: auto; margin-right: auto;">
+                        Python pilote le processus ; les prompts définissent principalement le comportement des agents
+                        IA. La génération du texte narratif est réalisée par les modèles de langage.</p>
+                </div>
+
+                <!-- ========================
+                     LIMITES & AXES D'AMÉLIORATION
+                     ======================== -->
+                <div class="section" style="padding-top: 0;">
+                    <h2 style="text-align: center; margin-bottom: 0.75rem;">Limites actuelles et axes de développement
+                    </h2>
+                    <p
+                        style="text-align: center; color: var(--muted); max-width: 680px; margin: 0 auto 2rem; font-size: 0.95rem;">
+                        Le projet est expérimental. Ces éléments représentent des axes de recherche et d'amélioration en
+                        cours — non des fonctionnalités résolues.
+                    </p>
+                    <div class="content-grid gta-features-grid">
+                        <div class="content-card">
+                            <div class="gta-feature-icon">📝</div>
+                            <h3>Qualité rédactionnelle</h3>
+                            <p>Les histoires générées ne possèdent pas encore le niveau de qualité souhaité.
+                                L'amélioration de la rédaction est un objectif central du développement.</p>
+                        </div>
+                        <div class="content-card">
+                            <div class="gta-feature-icon">🔧</div>
+                            <h3>Prompts à affiner</h3>
+                            <p>Les instructions et les compétences des différents agents doivent encore être améliorées
+                                pour produire des résultats plus fiables.</p>
+                        </div>
+                        <div class="content-card">
+                            <div class="gta-feature-icon">⚡</div>
+                            <h3>Optimisation des tokens</h3>
+                            <p>Le système doit mieux gérer la quantité de contexte transmise aux modèles afin de limiter
+                                les coûts de traitement et les informations inutiles.</p>
+                        </div>
+                        <div class="content-card">
+                            <div class="gta-feature-icon">🎯</div>
+                            <h3>Réduction des hallucinations</h3>
+                            <p>La fiabilité des informations générées et la réduction des incohérences restent des défis
+                                importants à résoudre.</p>
+                        </div>
+                        <div class="content-card">
+                            <div class="gta-feature-icon">🔗</div>
+                            <h3>Cohérence narrative</h3>
+                            <p>La mémoire et les mécanismes de vérification doivent encore être améliorés pour mieux
+                                maintenir la continuité du récit sur le long terme.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="index.html" class="btn btn-secondary">← Retour aux projets</a>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Portfolio IA & Automatisation</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

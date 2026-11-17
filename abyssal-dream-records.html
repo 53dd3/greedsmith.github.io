@@ -2,236 +2,356 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abyssal Dream Records - Projet Artistique IA</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abyssal Dream Records // Projet Artistique IA</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <a href="index.html" class="logo">Portfolio</a>
-                <nav>
-                    <ul>
-                        <li><a href="index.html">Accueil</a></li>
-                        <li><a href="crimson-lux.html">Crimson Lux</a></li>
-                        <li><a href="yamino-lux.html">Yamino Lux</a></li>
-                        <li><a href="abyssal-dream-records.html">Abyssal Dream Records</a></li>
-                        <li><a href="game-translator-ai.html">Game Translator AI</a></li>
-                        <li><a href="ai-story-engine.html">AI Story Engine</a></li>
-                    </ul>
-                </nav>
-                <div class="nav-actions">
-                    <button class="theme-toggle">☀️ Clair</button>
-                    <button class="hamburger">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                </div>
-            </div>
+  <!-- BACKGROUND CANVAS (Particules interactives conservées) -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- MOBILE TOP PROGRESS LINE -->
+  <div class="mobile-progress-line">
+    <div class="mobile-progress-fill"></div>
+  </div>
+
+  <!-- FULL-HEIGHT VERTICAL PROGRESS RULER -->
+  <aside class="progress-rail" aria-label="Règle de progression verticale">
+    <div class="rail-top">
+      <span class="rail-top-dot"></span>
+      <span>SYS-03</span>
+    </div>
+
+    <div class="rail-scale">
+      <div class="rail-axis"></div>
+      <div class="rail-progress-bar"></div>
+      <div class="rail-indicator">
+        <span class="indicator-pip"></span>
+        <span class="indicator-line"></span>
+      </div>
+      <div class="rail-marks">
+        <div class="rail-mark major" style="top: 0%;"><span>000</span></div>
+        <div class="rail-subtick" style="top: 10%;"></div>
+        <div class="rail-mark major" style="top: 20%;"><span>020</span></div>
+        <div class="rail-subtick" style="top: 30%;"></div>
+        <div class="rail-mark major" style="top: 40%;"><span>040</span></div>
+        <div class="rail-subtick" style="top: 50%;"></div>
+        <div class="rail-mark major" style="top: 60%;"><span>060</span></div>
+        <div class="rail-subtick" style="top: 70%;"></div>
+        <div class="rail-mark major" style="top: 80%;"><span>080</span></div>
+        <div class="rail-subtick" style="top: 90%;"></div>
+        <div class="rail-mark major" style="top: 100%;"><span>100</span></div>
+      </div>
+    </div>
+
+    <div class="rail-section-wrapper">
+      <span class="rail-section-label" id="rail-section">ABYSSAL DREAM</span>
+    </div>
+
+    <div class="rail-bottom">
+      <div class="rail-percentage">
+        <span id="scroll-pct">000</span><span class="pct-symbol">%</span>
+      </div>
+      <span class="rail-bottom-label">PROGRESSION</span>
+    </div>
+  </aside>
+
+  <!-- HEADER ET NAVIGATION DESKTOP IMPOSANTE -->
+  <header>
+    <div class="container">
+      <div class="header-inner">
+        <div class="header-left">
+          <a href="index.html" class="logo">
+            <span class="logo-indicator"></span>
+            <span>PORTFOLIO</span>
+            <span class="logo-badge">IA &amp; AUTO</span>
+          </a>
         </div>
-        <div class="mobile-menu">
-            <div class="container">
-                <ul>
-                    <li><a href="index.html">Accueil</a></li>
-                    <li><a href="crimson-lux.html">Crimson Lux</a></li>
-                    <li><a href="yamino-lux.html">Yamino Lux</a></li>
-                    <li><a href="abyssal-dream-records.html">Abyssal Dream Records</a></li>
-                    <li><a href="game-translator-ai.html">Game Translator AI</a></li>
-                    <li><a href="ai-story-engine.html">AI Story Engine</a></li>
-                </ul>
-            </div>
+
+        <nav class="header-nav" aria-label="Navigation principale">
+          <ul>
+            <li><a href="index.html">ACCUEIL</a></li>
+            <li><a href="crimson-lux.html">CRIMSON LUX</a></li>
+            <li><a href="yamino-lux.html">YAMINO LUX</a></li>
+            <li><a href="abyssal-dream-records.html" class="active" aria-current="page">ABYSSAL DREAM</a></li>
+            <li><a href="game-translator-ai.html">GAME TRANSLATOR</a></li>
+            <li><a href="ai-story-engine.html">STORY ENGINE</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-right">
+          <div class="header-status">
+            <span class="status-dot"></span>SYS_03 // ACTIVE
+          </div>
+          <button class="hamburger" aria-label="Menu" aria-expanded="false">
+            <span class="hamburger-box">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+            <span class="hamburger-text">MENU</span>
+          </button>
         </div>
-    </header>
+      </div>
+    </div>
 
-    <main>
-        <section class="section">
-            <div class="container">
-                <h1 class="section-title">Abyssal Dream Records</h1>
-                <p style="text-align: center; color: var(--muted); max-width: 800px; margin: 0 auto 3rem;">Projet
-                    artistique IA combinant musique, visuels et stratégie de réseaux sociaux</p>
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-menu">
+      <div class="container">
+        <ul>
+          <li><a href="index.html">01 // ACCUEIL</a></li>
+          <li><a href="crimson-lux.html">02 // CRIMSON LUX</a></li>
+          <li><a href="yamino-lux.html">03 // YAMINO LUX</a></li>
+          <li><a href="abyssal-dream-records.html" class="active">04 // ABYSSAL DREAM RECORDS</a></li>
+          <li><a href="game-translator-ai.html">05 // GAME TRANSLATOR AI</a></li>
+          <li><a href="ai-story-engine.html">06 // AI STORY ENGINE</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
 
-                <div class="video-section">
-                    <div class="video-container">
-                        <video autoplay muted loop playsinline>
-                            <source src="media/pas pour toi_promo_01.mp4" type="video/mp4">
-                            Votre navigateur ne supporte pas la lecture de vidéos.
-                        </video>
-                    </div>
-                    <button class="btn audio-toggle">🔇 Activer le son</button>
-                </div>
+  <main style="padding-top: var(--header-height);">
+    <div class="container">
+      <div class="continuous-grid">
 
-                <div class="content-grid">
-                    <div class="content-card">
-                        <h3>Vision</h3>
-                        <p>Abyssal Dream Records est un projet artistique explorant l'intersection entre l'IA, la
-                            musique et le storytelling visuel. L'objectif est de créer une expérience immersive qui
-                            combine génération musicale, visuels IA et stratégie de contenu pour les réseaux sociaux.
-                        </p>
-                    </div>
-
-                    <div class="content-card">
-                        <h3>Approche</h3>
-                        <ul>
-                            <li>Compréhension des algorithmes sociaux</li>
-                            <li>Storytelling visuel et narratif</li>
-                            <li>Prompt engineering pour vidéo</li>
-                            <li>Stratégie marketing organique</li>
-                        </ul>
-                    </div>
-
-                    <div class="content-card">
-                        <h3>Compétences</h3>
-                        <ul>
-                            <li>Génération de contenu IA (audio & vidéo)</li>
-                            <li>Marketing digital et réseaux sociaux</li>
-                            <li>Création de contenu multimédia</li>
-                            <li>Stratégie de marque et storytelling</li>
-                        </ul>
-                    </div>
-
-                    <div class="content-card">
-                        <h3>Objectifs</h3>
-                        <ul>
-                            <li>Créer une identité artistique unique</li>
-                            <li>Développer une audience engagée</li>
-                            <li>Explorer les possibilités créatives de l'IA</li>
-                            <li>Maîtriser les algorithmes de recommandation</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <h2 style="text-align:center; margin-bottom:0.5rem;">Résultats & Impact</h2>
-                    <p style="text-align:center; color:var(--muted); margin-bottom:2rem; font-size:0.95rem;">Métriques
-                        réelles du projet sur 1 ans</p>
-                    <div class="content-grid">
-
-                        <div class="content-card">
-                            <h3>Liras Crimson — Artiste IA Internationale</h3>
-                            <p>Chanteuse IA développée sous Abyssal Dream Records, distribuée sur toutes les plateformes
-                                de streaming mondiales. Croissance organique depuis zéro.</p>
-                            <ul>
-                                <li>+1 Million streams en moins d'un ans</li>
-                                <li>Audience internationale multi-pays</li>
-                                <li>Taux de sauvegarde et rétention élevés (Spotify)</li>
-                                <li>Pick-up algorithmique YouTube confirmé</li>
-                            </ul>
-                        </div>
-
-                        <div class="content-card">
-                            <h3>Pipeline Vocal IA — ACE Step 1.5
-                                <span
-                                    style="display:inline-block;margin-left:0.6rem;background:var(--accent);color:#fff;font-size:0.7rem;font-weight:500;padding:0.18rem 0.5rem;border-radius:0.3rem;vertical-align:middle;">
-                                    model d'IA local</span>
-                            </h3>
-                            <p>Transition du pipeline de génération musicale de Suno vers ACE Step 1.5 avec préparation
-                                de LoRAs vocaux personnalisés à partir de la voix isolée et des sons de Liras Crimson.
-                            </p>
-                            <ul>
-                                <li>Isolation vocale et préparation de dataset</li>
-                                <li>Fine-tuning LoRA sur identité vocale spécifique</li>
-                                <li>Contrôle avancé du timbre et du style</li>
-                                <li>Pipeline Suno → ACE Step en cours de migration</li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="section">
-                    <h2 style="text-align:center; margin-bottom:0.5rem;">Outils Développés</h2>
-                    <p style="text-align:center; color:var(--muted); margin-bottom:2rem; font-size:0.95rem;">
-                        Applications
-                        conçues pour les besoins opérationnels du label</p>
-                    <div class="content-grid">
-
-                        <div class="content-card">
-                            <h3>
-                                LIRAS CRIMSON GRID
-                                <span
-                                    style="display:inline-block;margin-left:0.6rem;background:var(--accent);color:#fff;font-size:0.7rem;font-weight:500;padding:0.18rem 0.5rem;border-radius:0.3rem;vertical-align:middle;">En
-                                    préparation</span>
-                            </h3>
-                            <p>Jeu de rythme indépendant basé sur l'univers de Liras Crimson. Les ennemis avancent au
-                                rythme des beats détectés dans la musique via librosa. Catalogue intégré en trois
-                                univers visuels avec musiques inédites exclusives et système de déblocage progressif.
-                            </p>
-                            <ul>
-                                <li>Python · Pygame · Librosa (beat detection)</li>
-                                <li>HTML5 · Web Audio API</li>
-                                <li>Chiffrement audio AES (clé personnalisée)</li>
-                                <li>Version PC + mobile Android/iOS prévue</li>
-                                <li>Distribution Ko-fi</li>
-                            </ul>
-                        </div>
-
-                        <div class="content-card">
-                            <h3>Outil de Tri Wallpapers</h3>
-                            <p>Application de bureau pour la gestion et la mise en vente du catalogue wallpapers sur
-                                Ko-fi. Classification automatique par format et résolution, optimisée pour les exports
-                                4K/2K smartphone et desktop.</p>
-                            <ul>
-                                <li>Classification automatique par format et résolution</li>
-                                <li>Renommage et organisation batch</li>
-                                <li>Optimisé pour la préparation Ko-fi</li>
-                                <li>Exécutable Windows standalone</li>
-                            </ul>
-                        </div>
-
-                        <div class="content-card">
-                            <h3>Comparateur de Mastering A/B/C</h3>
-                            <p>Outil web pour le contrôle qualité audio du label. Écoute simultanée et synchronisée de
-                                deux ou trois versions d'un même titre avec bascule instantanée sans coupure via Web
-                                Audio API.</p>
-                            <ul>
-                                <li>Bascule A/B/C seamless sans latence</li>
-                                <li>Resynchronisation automatique anti-dérive</li>
-                                <li>Volume master · seek · loop</li>
-                                <li>Interface HTML autonome sans dépendance</li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="linktree">
-                    <h3>Suivez Abyssal Dream Records</h3>
-                    <a href="https://linktr.ee/liras_crimson" target="_blank" rel="noopener noreferrer"
-                        class="linktree-link">
-                        🔗 Tous les liens - Linktree
-                    </a>
-                </div>
-
-                <div class="content-card">
-                    <h3>Différence avec Crimson Lux</h3>
-                    <p>Contrairement à Crimson Lux qui se concentre sur l'automatisation technique et les pipelines,
-                        Abyssal Dream Records met l'accent sur l'aspect artistique et la compréhension des dynamiques
-                        sociales. Le projet explore comment l'IA peut être utilisée non seulement comme outil de
-                        production, mais aussi comme medium créatif pour raconter des histoires et créer des connexions
-                        émotionnelles.</p>
-                </div>
-
-                <div style="text-align: center; margin-top: 3rem;">
-                    <a href="index.html" class="btn btn-secondary">← Retour aux projets</a>
-                </div>
-            </div>
+        <!-- 01 / OVERVIEW — HERO PROJET -->
+        <section class="page-hero" id="overview" data-section-name="01 / OVERVIEW">
+          <div class="page-hero-meta">
+            <span class="badge badge-accent">SYS_03 // CREATIVE AI</span>
+            <span class="badge">+1M STREAMS</span>
+            <span class="badge">LIRAS CRIMSON</span>
+            <span class="badge">ACE STEP 1.5</span>
+          </div>
+          <h1>Abyssal Dream Records</h1>
+          <p class="page-hero-sub">
+            Projet artistique IA combinant musique, visuels et stratégie de réseaux sociaux avec focus sur le storytelling.
+          </p>
+          <div class="page-hero-tags">
+            <span class="badge badge-outline">DISTRIBUTION INTERNATIONALE</span>
+            <span class="badge badge-outline">SYNTHÈSE VOCALE IA</span>
+            <span class="badge badge-outline">ALGORITHMES DE RECOMMANDATION</span>
+          </div>
         </section>
-    </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Portfolio IA & Automatisation</p>
-        </div>
-    </footer>
+        <!-- 02 / TEASER MULTIMÉDIA -->
+        <section class="section" id="teaser" data-section-name="02 / MEDIA">
+          <div class="section-header-bar">
+            <div><span class="section-num">02</span> / SAMPLE PROMOTIONNEL MULTIMÉDIA</div>
+            <div class="section-meta">GÉNÉRATION AUDIO &amp; VIDÉO SYNCHRONISÉE</div>
+          </div>
 
-    <script src="main.js"></script>
+          <div class="video-box">
+            <div class="video-container">
+              <video autoplay muted loop playsinline>
+                <source src="media/pas pour toi_promo_01.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la lecture de vidéos.
+              </video>
+            </div>
+            <button class="btn btn-outline audio-toggle">🔇 Activer le son</button>
+          </div>
+        </section>
+
+        <!-- 03 / CADRE CONCEPTUEL & STRATÉGIE -->
+        <section class="section" id="specs" data-section-name="03 / SPECS">
+          <div class="section-header-bar">
+            <div><span class="section-num">03</span> / CADRE CONCEPTUEL &amp; STRATÉGIE</div>
+            <div class="section-meta">CROSS-DISCIPLINE IA &amp; MARKETING</div>
+          </div>
+
+          <div class="content-matrix">
+            <div class="content-cell">
+              <span class="content-cell-tag">// 01. VISION</span>
+              <h3>Vision Artistique</h3>
+              <p>
+                Abyssal Dream Records est un projet artistique explorant l'intersection entre l'IA, la
+                musique et le storytelling visuel. L'objectif est de créer une expérience immersive qui
+                combine génération musicale, visuels IA et stratégie de contenu pour les réseaux sociaux.
+              </p>
+            </div>
+
+            <div class="content-cell">
+              <span class="content-cell-tag">// 02. APPROCHE</span>
+              <h3>Approche Méthodologique</h3>
+              <ul>
+                <li>Compréhension et pilotage des algorithmes sociaux</li>
+                <li>Storytelling visuel et narratif récurrent</li>
+                <li>Prompt engineering appliqué à la vidéo et au son</li>
+                <li>Stratégie marketing organique axée sur la rétention</li>
+              </ul>
+            </div>
+
+            <div class="content-cell">
+              <span class="content-cell-tag">// 03. COMPÉTENCES</span>
+              <h3>Compétences Techniques &amp; Créatives</h3>
+              <ul>
+                <li>Génération de contenu IA (audio, voix &amp; vidéo)</li>
+                <li>Marketing digital et réseaux sociaux</li>
+                <li>Création et montage de contenu multimédia</li>
+                <li>Stratégie de marque et storytelling de personnage</li>
+              </ul>
+            </div>
+
+            <div class="content-cell">
+              <span class="content-cell-tag">// 04. OBJECTIFS</span>
+              <h3>Objectifs Opérationnels</h3>
+              <ul>
+                <li>Créer une identité artistique unique et cohérente</li>
+                <li>Développer une audience engagée et internationale</li>
+                <li>Explorer les possibilités créatives de l'IA générative</li>
+                <li>Maîtriser les algorithmes de recommandation YouTube / Spotify</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 04 / RÉSULTATS & IMPACT -->
+        <section class="section" id="impact" data-section-name="04 / IMPACT">
+          <div class="section-header-bar">
+            <div><span class="section-num">04</span> / RÉSULTATS &amp; IMPACT RÉEL</div>
+            <div class="section-meta">MÉTRIQUES OBSERVÉES SUR 1 AN</div>
+          </div>
+
+          <div class="content-matrix">
+            <div class="content-cell">
+              <span class="content-cell-tag">// PERFORMANCE DIGITALE</span>
+              <h3>Liras Crimson — Artiste IA Internationale</h3>
+              <p style="margin-bottom: 1.25rem;">
+                Chanteuse IA développée sous Abyssal Dream Records, distribuée sur toutes les plateformes
+                de streaming mondiales. Croissance 100% organique sans budget publicitaire.
+              </p>
+              <ul>
+                <li>+1 Million streams en moins d'un an</li>
+                <li>Audience internationale multi-pays active</li>
+                <li>Taux de sauvegarde et rétention élevés sur Spotify</li>
+                <li>Pick-up algorithmique YouTube confirmé</li>
+              </ul>
+            </div>
+
+            <div class="content-cell">
+              <span class="content-cell-tag">// PIPELINE LOCAL</span>
+              <h3>Pipeline Vocal IA — ACE Step 1.5</h3>
+              <p style="margin-bottom: 1.25rem;">
+                Transition du pipeline de génération musicale de Suno vers ACE Step 1.5 (modèle d'IA local)
+                avec préparation de LoRAs vocaux personnalisés à partir de la voix isolée et des sons de Liras Crimson.
+              </p>
+              <ul>
+                <li>Isolation vocale et constitution d'un dataset dédié</li>
+                <li>Fine-tuning LoRA sur une identité vocale spécifique</li>
+                <li>Contrôle avancé du timbre, du vibrato et du style</li>
+                <li>Pipeline de migration Suno → ACE Step en cours</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 05 / OUTILS DÉVELOPPÉS -->
+        <section class="section" id="tools" data-section-name="05 / TOOLS">
+          <div class="section-header-bar">
+            <div><span class="section-num">05</span> / OUTILS &amp; APPLICATIONS DÉVELOPPÉS</div>
+            <div class="section-meta">SOLUTIONS LOGICIELLES INTERNES</div>
+          </div>
+
+          <div class="content-matrix" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+            <div class="content-cell">
+              <span class="content-cell-tag">// JEU INDÉPENDANT [EN PRÉPARATION]</span>
+              <h3>Liras Crimson Grid</h3>
+              <p>
+                Jeu de rythme indépendant basé sur l'univers de Liras Crimson. Les ennemis avancent au rythme
+                des beats détectés dans la musique via librosa. Catalogue intégré en trois univers visuels avec musiques
+                inédites exclusives et système de déblocage progressif.
+              </p>
+              <ul style="margin-top: 1rem;">
+                <li>Python · Pygame · Librosa (beat detection)</li>
+                <li>HTML5 · Web Audio API</li>
+                <li>Chiffrement audio AES (clé personnalisée)</li>
+                <li>Version PC + mobile Android/iOS prévue</li>
+                <li>Distribution Ko-fi</li>
+              </ul>
+            </div>
+
+            <div class="content-cell">
+              <span class="content-cell-tag">// UTILITAIRE STANDALONE</span>
+              <h3>Outil de Tri Wallpapers</h3>
+              <p>
+                Application de bureau pour la gestion et la mise en vente du catalogue wallpapers sur Ko-fi.
+                Classification automatique par format et résolution, optimisée pour les exports 4K/2K smartphone et desktop.
+              </p>
+              <ul style="margin-top: 1rem;">
+                <li>Classification automatique par format et résolution</li>
+                <li>Renommage et organisation batch</li>
+                <li>Optimisé pour la préparation Ko-fi</li>
+                <li>Exécutable Windows standalone</li>
+              </ul>
+            </div>
+
+            <div class="content-cell" style="border-right: none;">
+              <span class="content-cell-tag">// AUDIO QA</span>
+              <h3>Comparateur de Mastering A/B/C</h3>
+              <p>
+                Outil web pour le contrôle qualité audio du label. Écoute simultanée et synchronisée de deux
+                ou trois versions d'un même titre avec bascule instantanée sans coupure via Web Audio API.
+              </p>
+              <ul style="margin-top: 1rem;">
+                <li>Bascule A/B/C seamless sans latence</li>
+                <li>Resynchronisation automatique anti-dérive</li>
+                <li>Volume master · seek · loop</li>
+                <li>Interface HTML autonome sans dépendance</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Différence fondamentale avec Crimson Lux -->
+          <div class="content-cell" style="border-right: none;">
+            <span class="content-cell-tag">// PERSPECTIVE ARCHITECTURALE</span>
+            <h3>Différence fondamentale avec Crimson Lux</h3>
+            <p>
+              Contrairement à Crimson Lux qui se concentre sur l'automatisation technique pure et les pipelines d'infrastructure,
+              Abyssal Dream Records met l'accent sur l'aspect artistique et la compréhension des dynamiques sociales.
+              Le projet explore comment l'IA peut être mobilisée non seulement comme outil de production, mais aussi
+              comme medium créatif complet pour bâtir un univers, raconter des histoires et créer des connexions émotionnelles durables.
+            </p>
+          </div>
+
+          <!-- Linktree -->
+          <div class="linktree-box">
+            <h3 style="font-family: var(--font-mono); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.25rem;">
+              Distribution &amp; Écosystème Abyssal Dream Records
+            </h3>
+            <a href="https://linktr.ee/liras_crimson" target="_blank" rel="noopener noreferrer" class="linktree-link">
+              🔗 Accéder aux liens officiels — Linktree
+            </a>
+          </div>
+
+          <div style="padding: 2.5rem; text-align: center;">
+            <a href="index.html#projets" class="btn btn-outline">← Retour aux projets</a>
+          </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+          <div class="container" style="padding: 0 1.5rem;">
+            <div class="footer-content">
+              <div class="footer-brand">
+                &copy; 2026 // <span>PORTFOLIO IA &amp; AUTOMATISATION</span> — ABYSSAL DREAM RECORDS
+              </div>
+              <ul class="footer-links">
+                <li><a href="yamino-lux.html">← PROJET PRÉCÉDENT</a></li>
+                <li><a href="game-translator-ai.html">PROJET SUIVANT →</a></li>
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+      </div> <!-- /continuous-grid -->
+    </div> <!-- /container -->
+  </main>
+
+  <script src="main.js"></script>
 </body>
 
 </html>

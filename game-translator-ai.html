@@ -2,274 +2,355 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Translator AI - Automatisation de traduction de jeux vidéo</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Translator AI // Traduction de Jeux Vidéo</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <a href="index.html" class="logo">Portfolio</a>
-                <nav>
-                    <ul>
-                        <li><a href="index.html">Accueil</a></li>
-                        <li><a href="crimson-lux.html">Crimson Lux</a></li>
-                        <li><a href="yamino-lux.html">Yamino Lux</a></li>
-                        <li><a href="abyssal-dream-records.html">Abyssal Dream Records</a></li>
-                        <li><a href="game-translator-ai.html">Game Translator AI</a></li>
-                        <li><a href="ai-story-engine.html">AI Story Engine</a></li>
-                    </ul>
-                </nav>
-                <div class="nav-actions">
-                    <button class="theme-toggle">☀️ Clair</button>
-                    <button class="hamburger">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                </div>
-            </div>
+  <!-- BACKGROUND CANVAS (Particules interactives conservées) -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- MOBILE TOP PROGRESS LINE -->
+  <div class="mobile-progress-line">
+    <div class="mobile-progress-fill"></div>
+  </div>
+
+  <!-- FULL-HEIGHT VERTICAL PROGRESS RULER -->
+  <aside class="progress-rail" aria-label="Règle de progression verticale">
+    <div class="rail-top">
+      <span class="rail-top-dot"></span>
+      <span>SYS-04</span>
+    </div>
+
+    <div class="rail-scale">
+      <div class="rail-axis"></div>
+      <div class="rail-progress-bar"></div>
+      <div class="rail-indicator">
+        <span class="indicator-pip"></span>
+        <span class="indicator-line"></span>
+      </div>
+      <div class="rail-marks">
+        <div class="rail-mark major" style="top: 0%;"><span>000</span></div>
+        <div class="rail-subtick" style="top: 10%;"></div>
+        <div class="rail-mark major" style="top: 20%;"><span>020</span></div>
+        <div class="rail-subtick" style="top: 30%;"></div>
+        <div class="rail-mark major" style="top: 40%;"><span>040</span></div>
+        <div class="rail-subtick" style="top: 50%;"></div>
+        <div class="rail-mark major" style="top: 60%;"><span>060</span></div>
+        <div class="rail-subtick" style="top: 70%;"></div>
+        <div class="rail-mark major" style="top: 80%;"><span>080</span></div>
+        <div class="rail-subtick" style="top: 90%;"></div>
+        <div class="rail-mark major" style="top: 100%;"><span>100</span></div>
+      </div>
+    </div>
+
+    <div class="rail-section-wrapper">
+      <span class="rail-section-label" id="rail-section">GAME TRANSLATOR</span>
+    </div>
+
+    <div class="rail-bottom">
+      <div class="rail-percentage">
+        <span id="scroll-pct">000</span><span class="pct-symbol">%</span>
+      </div>
+      <span class="rail-bottom-label">PROGRESSION</span>
+    </div>
+  </aside>
+
+  <!-- HEADER ET NAVIGATION DESKTOP IMPOSANTE -->
+  <header>
+    <div class="container">
+      <div class="header-inner">
+        <div class="header-left">
+          <a href="index.html" class="logo">
+            <span class="logo-indicator"></span>
+            <span>PORTFOLIO</span>
+            <span class="logo-badge">IA &amp; AUTO</span>
+          </a>
         </div>
-        <div class="mobile-menu">
-            <div class="container">
-                <ul>
-                    <li><a href="index.html">Accueil</a></li>
-                    <li><a href="crimson-lux.html">Crimson Lux</a></li>
-                    <li><a href="yamino-lux.html">Yamino Lux</a></li>
-                    <li><a href="abyssal-dream-records.html">Abyssal Dream Records</a></li>
-                    <li><a href="game-translator-ai.html">Game Translator AI</a></li>
-                    <li><a href="ai-story-engine.html">AI Story Engine</a></li>
-                </ul>
-            </div>
+
+        <nav class="header-nav" aria-label="Navigation principale">
+          <ul>
+            <li><a href="index.html">ACCUEIL</a></li>
+            <li><a href="crimson-lux.html">CRIMSON LUX</a></li>
+            <li><a href="yamino-lux.html">YAMINO LUX</a></li>
+            <li><a href="abyssal-dream-records.html">ABYSSAL DREAM</a></li>
+            <li><a href="game-translator-ai.html" class="active" aria-current="page">GAME TRANSLATOR</a></li>
+            <li><a href="ai-story-engine.html">STORY ENGINE</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-right">
+          <div class="header-status">
+            <span class="status-dot"></span>SYS_04 // ACTIVE
+          </div>
+          <button class="hamburger" aria-label="Menu" aria-expanded="false">
+            <span class="hamburger-box">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+            <span class="hamburger-text">MENU</span>
+          </button>
         </div>
-    </header>
+      </div>
+    </div>
 
-    <main>
-        <section class="section">
-            <div class="container">
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-menu">
+      <div class="container">
+        <ul>
+          <li><a href="index.html">01 // ACCUEIL</a></li>
+          <li><a href="crimson-lux.html">02 // CRIMSON LUX</a></li>
+          <li><a href="yamino-lux.html">03 // YAMINO LUX</a></li>
+          <li><a href="abyssal-dream-records.html">04 // ABYSSAL DREAM RECORDS</a></li>
+          <li><a href="game-translator-ai.html" class="active">05 // GAME TRANSLATOR AI</a></li>
+          <li><a href="ai-story-engine.html">06 // AI STORY ENGINE</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
 
-                <!-- En-tête du projet -->
-                <div class="gta-hero">
-                    <div class="gta-hero-icon">
-                        <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"
-                            aria-hidden="true">
-                            <rect width="64" height="64" rx="16" fill="url(#gta-grad)" />
-                            <text x="32" y="44" text-anchor="middle" font-size="32" font-family="sans-serif">🌐</text>
-                            <defs>
-                                <linearGradient id="gta-grad" x1="0" y1="0" x2="64" y2="64"
-                                    gradientUnits="userSpaceOnUse">
-                                    <stop offset="0%" stop-color="#6366f1" />
-                                    <stop offset="100%" stop-color="#8b5cf6" />
-                                </linearGradient>
-                            </defs>
-                        </svg>
-                    </div>
-                    <h1 class="section-title" style="margin-bottom: 0.5rem;">Game Translator AI</h1>
-                    <p class="gta-subtitle">Automatisation de la traduction de jeux vidéo par intelligence artificielle
-                    </p>
-                    <span class="gta-status-badge">Prototype fonctionnel — en phase de test</span>
-                </div>
+  <main style="padding-top: var(--header-height);">
+    <div class="container">
+      <div class="continuous-grid">
 
-                <!-- Contexte & Objectifs -->
-                <div class="content-grid">
-                    <div class="content-card">
-                        <h3>Contexte</h3>
-                        <p>Game Translator AI est un outil développé en Python qui automatise la traduction de jeux
-                            vidéo utilisant le moteur Ren'Py. L'objectif est de réduire considérablement le travail
-                            manuel nécessaire pour traduire des jeux comportant un très grand volume de dialogues.</p>
-                    </div>
-
-                    <div class="content-card">
-                        <h3>Objectifs</h3>
-                        <ul>
-                            <li>Automatiser l'analyse des fichiers de traduction Ren'Py</li>
-                            <li>Traiter de grands volumes de dialogues par lots</li>
-                            <li>Maintenir la cohérence linguistique via un glossaire</li>
-                            <li>Préserver intégralement la syntaxe et le code du moteur</li>
-                            <li>Générer des fichiers directement utilisables dans le jeu</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Technologies -->
-                <div class="section" style="padding-top: 0;">
-                    <h2 style="text-align: center; margin-bottom: 1.5rem;">Technologies</h2>
-                    <div class="gta-tags">
-                        <span class="gta-tag">Python</span>
-                        <span class="gta-tag">LM Studio</span>
-                        <span class="gta-tag">API compatible OpenAI</span>
-                        <span class="gta-tag">JSON</span>
-                        <span class="gta-tag">Ren'Py</span>
-                        <span class="gta-tag">Traitement par lots</span>
-                        <span class="gta-tag">Automatisation</span>
-                    </div>
-                </div>
-
-                <!-- Fonctionnalités -->
-                <div class="section" style="padding-top: 0;">
-                    <h2 style="text-align: center; margin-bottom: 2rem;">Fonctionnalités</h2>
-                    <div class="content-grid gta-features-grid">
-                        <div class="content-card">
-                            <div class="gta-feature-icon">🔍</div>
-                            <h3>Analyse des fichiers</h3>
-                            <p>Le programme parcourt les fichiers <code>.rpy</code> du jeu afin d'identifier les entrées
-                                de traduction à compléter.</p>
-                        </div>
-                        <div class="content-card">
-                            <div class="gta-feature-icon">📦</div>
-                            <h3>Traduction par lots</h3>
-                            <p>Les textes sont regroupés en blocs pour permettre le traitement de volumes importants de
-                                dialogues.</p>
-                        </div>
-                        <div class="content-card">
-                            <div class="gta-feature-icon">📖</div>
-                            <h3>Traduction contextualisée</h3>
-                            <p>Le modèle reçoit des instructions, des règles linguistiques et un glossaire afin
-                                d'améliorer la cohérence des traductions.</p>
-                        </div>
-                        <div class="content-card">
-                            <div class="gta-feature-icon">🔒</div>
-                            <h3>Préservation du code</h3>
-                            <p>Les variables, balises et éléments spécifiques à Ren'Py qui ne doivent pas être traduits
-                                sont préservés intégralement.</p>
-                        </div>
-                        <div class="content-card">
-                            <div class="gta-feature-icon">📝</div>
-                            <h3>Génération des traductions</h3>
-                            <p>Le programme génère et remplit les fichiers de traduction français dans la structure
-                                attendue par Ren'Py.</p>
-                        </div>
-                        <div class="content-card">
-                            <div class="gta-feature-icon">💾</div>
-                            <h3>Suivi de progression</h3>
-                            <p>Le système conserve des informations sur l'avancement du traitement afin de permettre sa
-                                reprise après une interruption.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Fonctionnement technique -->
-                <div class="section" style="padding-top: 0;">
-                    <h2 style="text-align: center; margin-bottom: 2rem;">Fonctionnement technique</h2>
-                    <p style="text-align: center; color: var(--muted); max-width: 700px; margin: 0 auto 2rem;">Le
-                        traitement se déroule en plusieurs étapes enchaînées, de l'analyse initiale des fichiers jusqu'à
-                        la génération des traductions finales.</p>
-                    <div class="gta-steps">
-                        <div class="gta-step">
-                            <div class="gta-step-number">1</div>
-                            <div class="gta-step-content">
-                                <h4>Analyse des fichiers</h4>
-                                <p>Décompilation et lecture des fichiers du jeu pour en extraire la structure.</p>
-                            </div>
-                        </div>
-                        <div class="gta-step">
-                            <div class="gta-step-number">2</div>
-                            <div class="gta-step-content">
-                                <h4>Identification des entrées</h4>
-                                <p>Repérage de toutes les entrées de traduction à compléter dans les fichiers
-                                    <code>.rpy</code>.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="gta-step">
-                            <div class="gta-step-number">3</div>
-                            <div class="gta-step-content">
-                                <h4>Découpage en lots</h4>
-                                <p>Les textes sont regroupés en blocs de taille optimale pour le traitement par le
-                                    modèle.</p>
-                            </div>
-                        </div>
-                        <div class="gta-step">
-                            <div class="gta-step-number">4</div>
-                            <div class="gta-step-content">
-                                <h4>Envoi à LM Studio</h4>
-                                <p>Chaque lot est envoyé au modèle de langage local avec les instructions, règles et
-                                    glossaire.</p>
-                            </div>
-                        </div>
-                        <div class="gta-step">
-                            <div class="gta-step-number">5</div>
-                            <div class="gta-step-content">
-                                <h4>Réception JSON</h4>
-                                <p>Les traductions sont reçues sous forme structurée au format JSON.</p>
-                            </div>
-                        </div>
-                        <div class="gta-step">
-                            <div class="gta-step-number">6</div>
-                            <div class="gta-step-content">
-                                <h4>Écriture des fichiers</h4>
-                                <p>Les résultats sont écrits dans les fichiers de traduction Ren'Py, dans la structure
-                                    attendue par le jeu.</p>
-                            </div>
-                        </div>
-                        <div class="gta-step">
-                            <div class="gta-step-number">7</div>
-                            <div class="gta-step-content">
-                                <h4>Sauvegarde de la progression</h4>
-                                <p>L'avancement est enregistré à chaque lot, permettant de reprendre le traitement après
-                                    interruption.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <p style="text-align: center; color: var(--muted); margin-top: 1.5rem; font-size: 0.9rem;">Après
-                        génération, l'utilisateur sélectionne le français dans les options du jeu — aucune étape
-                        supplémentaire n'est nécessaire.</p>
-                </div>
-
-                <!-- Résultats des tests -->
-                <div class="section" style="padding-top: 0;">
-                    <h2 style="text-align: center; margin-bottom: 2rem;">Résultats des tests</h2>
-                    <div class="gta-stat-block">
-                        <div class="gta-stat-number">~800 000</div>
-                        <div class="gta-stat-label">lignes de dialogue traitées en 24 h</div>
-                        <p class="gta-stat-note">Estimation issue des premiers essais expérimentaux. Ce débit peut
-                            varier selon le modèle utilisé, la taille des lots et le jeu traité.</p>
-                    </div>
-                </div>
-
-                <!-- Vision & Architecture -->
-                <div class="section" style="padding-top: 0;">
-                    <h2 style="text-align: center; margin-bottom: 2rem;">Axes d'amélioration</h2>
-                    <p style="text-align: center; color: var(--muted); max-width: 700px; margin: 0 auto 2rem;">Ces
-                        pistes représentent des objectifs futurs — non des fonctionnalités déjà disponibles.</p>
-                    <div class="content-grid">
-                        <div class="content-card">
-                            <h3>Compatibilité étendue</h3>
-                            <p>Étendre progressivement la prise en charge à d'autres moteurs de jeux, au-delà de Ren'Py.
-                            </p>
-                        </div>
-                        <div class="content-card">
-                            <h3>Contrôle qualité</h3>
-                            <p>Améliorer la vérification automatique de la qualité des traductions produites.</p>
-                        </div>
-                        <div class="content-card">
-                            <h3>Optimisation des volumes</h3>
-                            <p>Optimiser le traitement pour mieux gérer les très gros volumes de texte.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div style="text-align: center; margin-top: 3rem;">
-                    <a href="index.html" class="btn btn-secondary">← Retour aux projets</a>
-                </div>
-
-            </div>
+        <!-- 01 / OVERVIEW — HERO PROJET -->
+        <section class="page-hero" id="overview" data-section-name="01 / OVERVIEW">
+          <div class="page-hero-meta">
+            <span class="badge badge-accent">SYS_04 // LOCAL LLM</span>
+            <span class="badge">REN'PY ENGINE</span>
+            <span class="badge">~800K LIGNES / 24H</span>
+          </div>
+          <h1>Game Translator AI</h1>
+          <p class="page-hero-sub">
+            Automatisation de la traduction de jeux vidéo par intelligence artificielle locale et préservation syntaxique.
+          </p>
+          <div class="page-hero-tags">
+            <span class="badge badge-outline">PROTOTYPE FONCTIONNEL</span>
+            <span class="badge badge-outline">EN PHASE DE TEST</span>
+            <span class="badge badge-outline">100% EXÉCUTION LOCALE</span>
+          </div>
         </section>
-    </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Portfolio IA & Automatisation</p>
-        </div>
-    </footer>
+        <!-- 02 / CONTEXTE & OBJECTIFS -->
+        <section class="section" id="specs" data-section-name="02 / SPECS">
+          <div class="section-header-bar">
+            <div><span class="section-num">02</span> / CONTEXTE TECHNIQUE &amp; OBJECTIFS</div>
+            <div class="section-meta">TRAITEMENT BATCH &amp; SYNTAXE</div>
+          </div>
 
-    <script src="main.js"></script>
+          <div class="content-matrix">
+            <div class="content-cell">
+              <span class="content-cell-tag">// 01. CONTEXTE</span>
+              <h3>Contexte Opérationnel</h3>
+              <p>
+                Game Translator AI est un outil développé en Python qui automatise la traduction de jeux vidéo
+                utilisant le moteur Ren'Py. L'objectif est de réduire considérablement le travail manuel
+                nécessaire pour traduire des jeux comportant un très grand volume de dialogues.
+              </p>
+            </div>
+
+            <div class="content-cell">
+              <span class="content-cell-tag">// 02. OBJECTIFS</span>
+              <h3>Objectifs du Système</h3>
+              <ul>
+                <li>Automatiser l'analyse des fichiers de traduction Ren'Py (<code>.rpy</code>)</li>
+                <li>Traiter de grands volumes de dialogues par lots continus</li>
+                <li>Maintenir la cohérence linguistique via un glossaire contextuel</li>
+                <li>Préserver intégralement la syntaxe et le code interne du moteur</li>
+                <li>Générer des fichiers directement utilisables dans le build final</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="gta-tags">
+            <span class="gta-tag">Python</span>
+            <span class="gta-tag">LM Studio</span>
+            <span class="gta-tag">API compatible OpenAI</span>
+            <span class="gta-tag">JSON Structuré</span>
+            <span class="gta-tag">Ren'Py Engine</span>
+            <span class="gta-tag">Traitement par lots</span>
+            <span class="gta-tag">Automatisation locale</span>
+          </div>
+        </section>
+
+        <!-- 03 / MODULES & FONCTIONNALITÉS -->
+        <section class="section" id="features" data-section-name="03 / FEATURES">
+          <div class="section-header-bar">
+            <div><span class="section-num">03</span> / MODULES &amp; FONCTIONNALITÉS</div>
+            <div class="section-meta">ARCHITECTURE FONCTIONNELLE DÉTAILLÉE</div>
+          </div>
+
+          <div class="content-matrix" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+            <div class="content-cell">
+              <span class="content-cell-tag">[01 // PARSER]</span>
+              <h3>Analyse des fichiers</h3>
+              <p>Le programme parcourt les fichiers <code>.rpy</code> du jeu afin d'identifier les entrées de traduction à compléter.</p>
+            </div>
+
+            <div class="content-cell">
+              <span class="content-cell-tag">[02 // BATCH]</span>
+              <h3>Traduction par lots</h3>
+              <p>Les textes sont regroupés en blocs pour permettre le traitement de volumes importants de dialogues sans dépasser les fenêtres de contexte.</p>
+            </div>
+
+            <div class="content-cell">
+              <span class="content-cell-tag">[03 // CONTEXT]</span>
+              <h3>Traduction contextualisée</h3>
+              <p>Le modèle reçoit des instructions, des règles linguistiques et un glossaire afin d'améliorer la cohérence des traductions.</p>
+            </div>
+
+            <div class="content-cell">
+              <span class="content-cell-tag">[04 // SYNTAX]</span>
+              <h3>Préservation du code</h3>
+              <p>Les variables, balises et éléments spécifiques à Ren'Py qui ne doivent pas être traduits sont préservés intégralement.</p>
+            </div>
+
+            <div class="content-cell">
+              <span class="content-cell-tag">[05 // GENERATOR]</span>
+              <h3>Génération des traductions</h3>
+              <p>Le programme génère et remplit les fichiers de traduction français dans la structure attendue nativement par Ren'Py.</p>
+            </div>
+
+            <div class="content-cell" style="border-right: none;">
+              <span class="content-cell-tag">[06 // CHECKPOINT]</span>
+              <h3>Suivi de progression</h3>
+              <p>Le système conserve des informations sur l'avancement du traitement afin de permettre sa reprise instantanée après une interruption.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 04 / PIPELINE D'EXÉCUTION TECHNIQUE -->
+        <section class="section" id="pipeline" data-section-name="04 / PIPELINE">
+          <div class="section-header-bar">
+            <div><span class="section-num">04</span> / PIPELINE D'EXÉCUTION TECHNIQUE</div>
+            <div class="section-meta">SÉQUENCEMENT ÉTAPE PAR ÉTAPE</div>
+          </div>
+
+          <div class="gta-steps-matrix">
+            <div class="gta-step-row">
+              <div class="gta-step-num">01</div>
+              <div class="gta-step-body">
+                <h4>Analyse et décompilation des fichiers</h4>
+                <p>Décompilation et lecture des fichiers du jeu pour en extraire la structure syntaxique et les chaînes de texte.</p>
+              </div>
+            </div>
+
+            <div class="gta-step-row">
+              <div class="gta-step-num">02</div>
+              <div class="gta-step-body">
+                <h4>Identification des entrées de traduction</h4>
+                <p>Repérage automatisé de toutes les entrées de traduction à compléter dans les fichiers <code>.rpy</code>.</p>
+              </div>
+            </div>
+
+            <div class="gta-step-row">
+              <div class="gta-step-num">03</div>
+              <div class="gta-step-body">
+                <h4>Découpage optimisé en lots (Batching)</h4>
+                <p>Les textes sont regroupés en blocs de taille optimale pour le traitement continu par le modèle LLM local.</p>
+              </div>
+            </div>
+
+            <div class="gta-step-row">
+              <div class="gta-step-num">04</div>
+              <div class="gta-step-body">
+                <h4>Transmission à LM Studio / Local LLM</h4>
+                <p>Chaque lot est envoyé au modèle de langage local avec les consignes strictes, les règles grammaticales et le glossaire.</p>
+              </div>
+            </div>
+
+            <div class="gta-step-row">
+              <div class="gta-step-num">05</div>
+              <div class="gta-step-body">
+                <h4>Réception &amp; Validation JSON</h4>
+                <p>Les traductions sont reçues sous forme rigoureusement structurée au format JSON et vérifiées avant écriture.</p>
+              </div>
+            </div>
+
+            <div class="gta-step-row">
+              <div class="gta-step-num">06</div>
+              <div class="gta-step-body">
+                <h4>Écriture des fichiers de traduction</h4>
+                <p>Les résultats validés sont écrits dans les fichiers de localisation Ren'Py, dans l'arborescence native du jeu.</p>
+              </div>
+            </div>
+
+            <div class="gta-step-row">
+              <div class="gta-step-num">07</div>
+              <div class="gta-step-body">
+                <h4>Sauvegarde de l'état (Checkpointing)</h4>
+                <p>L'avancement est enregistré sur disque à chaque lot, permettant de reprendre le pipeline sans aucune perte en cas d'arrêt.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 05 / BENCHMARKS & ROADMAP -->
+        <section class="section" id="benchmarks" data-section-name="05 / BENCHMARKS">
+          <div class="section-header-bar">
+            <div><span class="section-num">05</span> / RÉSULTATS DES TESTS &amp; ROADMAP</div>
+            <div class="section-meta">BENCHMARK 24H &amp; AXES D'AMÉLIORATION</div>
+          </div>
+
+          <div class="gta-stat-row">
+            <div class="gta-stat-number">~800 000</div>
+            <div class="gta-stat-label">Lignes de dialogue traitées en 24 h</div>
+            <p class="gta-stat-note">
+              Estimation issue des premiers essais expérimentaux sur machine locale. Ce débit varie selon le modèle utilisé, la taille des lots et le jeu traité.
+            </p>
+          </div>
+
+          <div class="content-matrix" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+            <div class="content-cell">
+              <span class="content-cell-tag">// MOTEURS COMPATIBLES</span>
+              <h3>Compatibilité étendue</h3>
+              <p>Étendre progressivement la prise en charge à d'autres moteurs de jeux vidéo (RPG Maker, Unity, Godot), au-delà de Ren'Py.</p>
+            </div>
+
+            <div class="content-cell">
+              <span class="content-cell-tag">// ASSURANCE QUALITÉ</span>
+              <h3>Contrôle qualité automatique</h3>
+              <p>Améliorer la vérification automatique de la cohérence tonale et stylistique des traductions produites via un agent critique.</p>
+            </div>
+
+            <div class="content-cell" style="border-right: none;">
+              <span class="content-cell-tag">// DÉBIT &amp; CACHE</span>
+              <h3>Optimisation des volumes</h3>
+              <p>Optimiser le pipeline de tokenisation et le cache sémantique pour traiter plus rapidement les jeux à embranchements massifs.</p>
+            </div>
+          </div>
+
+          <div style="padding: 2.5rem; text-align: center;">
+            <a href="index.html#projets" class="btn btn-outline">← Retour aux projets</a>
+          </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+          <div class="container" style="padding: 0 1.5rem;">
+            <div class="footer-content">
+              <div class="footer-brand">
+                &copy; 2026 // <span>PORTFOLIO IA &amp; AUTOMATISATION</span> — GAME TRANSLATOR AI
+              </div>
+              <ul class="footer-links">
+                <li><a href="abyssal-dream-records.html">← PROJET PRÉCÉDENT</a></li>
+                <li><a href="ai-story-engine.html">PROJET SUIVANT →</a></li>
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+      </div> <!-- /continuous-grid -->
+    </div> <!-- /container -->
+  </main>
+
+  <script src="main.js"></script>
 </body>
 
 </html>

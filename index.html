@@ -4,128 +4,418 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio - Développement IA & Automatisation</title>
+  <title>Portfolio — IA &amp; Automatisation // Continuous Technical Grid</title>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
+  <!-- BACKGROUND CANVAS (Particules interactives conservées) -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- MOBILE TOP PROGRESS LINE -->
+  <div class="mobile-progress-line">
+    <div class="mobile-progress-fill"></div>
+  </div>
+
+  <!-- FULL-HEIGHT VERTICAL PROGRESS RULER (ArtCraft Style) -->
+  <aside class="progress-rail" aria-label="Règle de progression verticale">
+    <div class="rail-top">
+      <span class="rail-top-dot"></span>
+      <span>AXIS Z-1</span>
+    </div>
+
+    <div class="rail-scale">
+      <div class="rail-axis"></div>
+      <div class="rail-progress-bar"></div>
+      <div class="rail-indicator">
+        <span class="indicator-pip"></span>
+        <span class="indicator-line"></span>
+      </div>
+      <div class="rail-marks">
+        <div class="rail-mark major" style="top: 0%;"><span>000</span></div>
+        <div class="rail-subtick" style="top: 10%;"></div>
+        <div class="rail-mark major" style="top: 20%;"><span>020</span></div>
+        <div class="rail-subtick" style="top: 30%;"></div>
+        <div class="rail-mark major" style="top: 40%;"><span>040</span></div>
+        <div class="rail-subtick" style="top: 50%;"></div>
+        <div class="rail-mark major" style="top: 60%;"><span>060</span></div>
+        <div class="rail-subtick" style="top: 70%;"></div>
+        <div class="rail-mark major" style="top: 80%;"><span>080</span></div>
+        <div class="rail-subtick" style="top: 90%;"></div>
+        <div class="rail-mark major" style="top: 100%;"><span>100</span></div>
+      </div>
+    </div>
+
+    <div class="rail-section-wrapper">
+      <span class="rail-section-label" id="rail-section">01 / INTRODUCTION</span>
+    </div>
+
+    <div class="rail-bottom">
+      <div class="rail-percentage">
+        <span id="scroll-pct">000</span><span class="pct-symbol">%</span>
+      </div>
+      <span class="rail-bottom-label">PROGRESSION</span>
+    </div>
+  </aside>
+
+  <!-- HEADER ET NAVIGATION DESKTOP IMPOSANTE -->
   <header>
     <div class="container">
-      <div class="header-content">
-        <a href="index.html" class="logo">Portfolio</a>
-        <nav>
+      <div class="header-inner">
+        <div class="header-left">
+          <a href="index.html" class="logo">
+            <span class="logo-indicator"></span>
+            <span>PORTFOLIO</span>
+            <span class="logo-badge">IA &amp; AUTO</span>
+          </a>
+        </div>
+
+        <!-- Liens principaux directement visibles sur desktop -->
+        <nav class="header-nav" aria-label="Navigation principale">
           <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="crimson-lux.html">Crimson Lux</a></li>
-            <li><a href="yamino-lux.html">Yamino Lux</a></li>
-            <li><a href="abyssal-dream-records.html">Abyssal Dream Records</a></li>
-            <li><a href="game-translator-ai.html">Game Translator AI</a></li>
-            <li><a href="ai-story-engine.html">AI Story Engine</a></li>
+            <li><a href="index.html" class="active" aria-current="page">ACCUEIL</a></li>
+            <li><a href="#about">À PROPOS</a></li>
+            <li><a href="#projets">PROJETS</a></li>
+            <li><a href="#experience">EXPÉRIENCE</a></li>
+            <li><a href="#contact">CONTACT</a></li>
           </ul>
         </nav>
-        <div class="nav-actions">
-          <button class="theme-toggle">☀️ Clair</button>
-          <button class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
+
+        <div class="header-right">
+          <div class="header-status">
+            <span class="status-dot"></span>SYS // ONLINE
+          </div>
+          <button class="hamburger" aria-label="Menu des projets" aria-expanded="false">
+            <span class="hamburger-box">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+            <span class="hamburger-text">MENU</span>
           </button>
         </div>
       </div>
     </div>
+
+    <!-- Tiroir secondaire & Mobile Menu -->
     <div class="mobile-menu">
       <div class="container">
         <ul>
-          <li><a href="index.html">Accueil</a></li>
-          <li><a href="crimson-lux.html">Crimson Lux</a></li>
-          <li><a href="yamino-lux.html">Yamino Lux</a></li>
-          <li><a href="abyssal-dream-records.html">Abyssal Dream Records</a></li>
-          <li><a href="game-translator-ai.html">Game Translator AI</a></li>
-          <li><a href="ai-story-engine.html">AI Story Engine</a></li>
+          <li><a href="index.html" class="active">01 // ACCUEIL PRINCIPAL</a></li>
+          <li><a href="crimson-lux.html">02 // CRIMSON LUX — PIPELINE STABLE DIFFUSION</a></li>
+          <li><a href="yamino-lux.html">03 // YAMINO LUX — DÉCLINAISON MANGA/ANIME</a></li>
+          <li><a href="abyssal-dream-records.html">04 // ABYSSAL DREAM RECORDS — +1M STREAMS</a></li>
+          <li><a href="game-translator-ai.html">05 // GAME TRANSLATOR AI — LOCAL LLM</a></li>
+          <li><a href="ai-story-engine.html">06 // AI STORY ENGINE — MULTI-AGENTS</a></li>
         </ul>
       </div>
     </div>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="container">
-        <h1>Développement IA & Automatisation</h1>
-        <p>Création de pipelines d'automatisation intelligents et projets artistiques alimentés par l'IA</p>
-      </div>
-    </section>
-
-    <section class="hero">
-      <h2>À propos</h2>
-      <p>
-        Autodidacte en automatisation et IA appliquée, je conçois des systèmes orientés
-        production réelle : génération de contenu à grande échelle, tri automatisé,
-        exploitation de métadonnées et orchestration de workflows.
-        Issu d’un parcours technique, je m’oriente aujourd’hui vers une alternance afin
-        de structurer et professionnaliser ces compétences.
-      </p>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">Projets</h2>
-        <div class="projects-grid">
-          <div class="project-card">
-            <img src="media/logo_crimsonlux.png" alt="Crimson Lux">
-            <h3>Crimson Lux</h3>
-            <p>Pipeline d'automatisation IA pour la génération et le traitement d'images avec workflow complet de tri et
-              organisation.</p>
-            <a href="crimson-lux.html" class="btn">Découvrir</a>
-          </div>
-
-          <div class="project-card">
-            <img src="media/logo_yaminolux.png" alt="Yamino Lux">
-            <h3>Yamino Lux</h3>
-            <p>Déclinaison manga/anime de Crimson Lux, exploration artistique et adaptation stylistique de
-              l'automatisation IA.</p>
-            <a href="yamino-lux.html" class="btn">Découvrir</a>
-          </div>
-
-          <div class="project-card">
-            <img src="media/logo_abyssaldreamrecords.png" alt="Abyssal Dream Records">
-            <h3>Abyssal Dream Records</h3>
-            <p>Projet artistique IA combinant musique, visuels et stratégie de réseaux sociaux avec focus sur le
-              storytelling.</p>
-            <a href="abyssal-dream-records.html" class="btn">Découvrir</a>
-          </div>
-
-          <div class="project-card">
-            <div class="project-card-icon">
-              <img src="media\game_translator.png" alt="game translator AI">
-            </div>
-            <h3>Game Translator AI</h3>
-            <p>Automatisation de la traduction de jeux vidéo Ren'Py par intelligence artificielle et modèles de langage
-              locaux.</p>
-            <a href="game-translator-ai.html" class="btn">Découvrir</a>
-          </div>
-
-          <div class="project-card">
-            <div class="project-card-icon">
-              <img src="media\AI_story_engine.png" alt="story engine AI">
-            </div>
-            <h3>AI Story Engine</h3>
-            <p>Moteur expérimental de génération narrative multi-agents orchestré en Python avec mémoire structurée en
-              nœuds.</p>
-            <a href="ai-story-engine.html" class="btn">Découvrir</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
     <div class="container">
-      <p>&copy; 2026 Portfolio IA & Automatisation</p>
-    </div>
-  </footer>
+      <!-- GRILLE CONTINUE GLOBALE -->
+      <div class="continuous-grid">
+
+        <!-- 01 / INTRODUCTION — HERO SECTION -->
+        <section class="hero" id="hero" data-section-name="01 / INTRODUCTION">
+          <div class="section-header-bar">
+            <div><span class="section-num">01</span> / INTRODUCTION</div>
+            <div class="section-meta">SYS.PORTFOLIO // v2.8 // ARCHITECTURE TECHNIQUE 2D</div>
+          </div>
+
+          <div class="grid-2col">
+            <div class="hero-main">
+              <p class="hero-eyebrow">// IA · AUTOMATISATION · CODE DE PRODUCTION</p>
+              <h1>
+                Systèmes <span class="text-accent">intelligents</span><br>
+                du concept à la prod
+              </h1>
+              <p class="hero-sub">
+                Autodidacte en automatisation et IA appliquée — pipelines de génération,
+                orchestration multi-agents, workflows orientés production réelle.
+              </p>
+              <div class="hero-cta">
+                <a href="#projets" class="btn btn-primary">Voir les projets</a>
+                <a href="#about" class="btn btn-outline">À propos</a>
+              </div>
+            </div>
+
+            <!-- Télémétrie intégrée directement dans la colonne de grille -->
+            <div class="hero-telemetry-col">
+              <div class="telemetry-cell-header">
+                <span>SYSTEM READOUT</span>
+                <span class="text-accent">● LIVE TELEMETRY</span>
+              </div>
+              <div class="telemetry-cell-body">
+                <div class="telemetry-row">
+                  <span class="telemetry-key">CORE FOCUS</span>
+                  <span class="telemetry-val">IA APPLIQUÉE</span>
+                </div>
+                <div class="telemetry-row">
+                  <span class="telemetry-key">ORCHESTRATION</span>
+                  <span class="telemetry-val">MULTI-AGENTS &amp; N8N</span>
+                </div>
+                <div class="telemetry-row">
+                  <span class="telemetry-key">FRAMEWORKS</span>
+                  <span class="telemetry-val">PYTHON · LOCAL LLM</span>
+                </div>
+                <div class="telemetry-row">
+                  <span class="telemetry-key">INFRASTRUCTURE</span>
+                  <span class="telemetry-val accent">100% SELF-HOSTED</span>
+                </div>
+                <div class="telemetry-row">
+                  <span class="telemetry-key">OBJECTIF ACTUEL</span>
+                  <span class="telemetry-val accent">ALTERNANCE IA / DÉV</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 02 / ABOUT & EXPERIENCE -->
+        <section class="about-section" id="about" data-section-name="02 / ABOUT">
+          <div class="section-header-bar">
+            <div><span class="section-num">02</span> / ABOUT &amp; EXPERIENCE</div>
+            <div class="section-meta">PARCOURS TECHNIQUE &amp; MÉTRIQUES OPÉRATIONNELLES</div>
+          </div>
+
+          <div class="grid-2col" id="experience">
+            <div class="about-main-col">
+              <h2>Passionné par l'IA&nbsp;appliquée et l'automatisation réelle</h2>
+              <p>
+                Autodidacte en automatisation et IA appliquée, je conçois des systèmes
+                orientés production réelle&nbsp;: génération de contenu à grande échelle,
+                tri automatisé, exploitation de métadonnées et orchestration de workflows.
+              </p>
+              <p>
+                Issu d'un parcours technique, je m'oriente aujourd'hui vers une alternance
+                afin de structurer et professionnaliser ces compétences au sein d'une équipe de production.
+              </p>
+            </div>
+
+            <!-- Matrice 2x2 des statistiques (sans conteneur gris !) -->
+            <div class="stats-matrix">
+              <div class="stat-cell">
+                <div class="stat-number">5<span class="stat-unit">+</span></div>
+                <div class="stat-label">Projets IA déployés</div>
+              </div>
+              <div class="stat-cell">
+                <div class="stat-number">1<span class="stat-unit">M+</span></div>
+                <div class="stat-label">Streams générés</div>
+              </div>
+              <div class="stat-cell">
+                <div class="stat-number">800<span class="stat-unit">k</span></div>
+                <div class="stat-label">Lignes traduit / 24h</div>
+              </div>
+              <div class="stat-cell">
+                <div class="stat-number">100<span class="stat-unit">%</span></div>
+                <div class="stat-label">Self-hosted &amp; local</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 03 / PROJECTS — CONTINUOUS MATRIX -->
+        <section class="projects-section" id="projets" data-section-name="03 / PROJECTS">
+          <div class="section-header-bar">
+            <div><span class="section-num">03</span> / PROJECTS</div>
+            <div class="section-meta">MATRICE 3×2 DE SYSTÈMES ET PIPELINES DÉPLOYÉS</div>
+          </div>
+
+          <div class="projects-intro-row">
+            <h2>Travaux &amp; Systèmes</h2>
+            <p>
+              Sélection de 5 projets conçus avec une approche orientée production, modularité technique et intégration de modèles d'IA locaux et distribués.
+            </p>
+          </div>
+
+          <!-- Matrice continue 3x2 intégrée directement dans la grille -->
+          <div class="projects-matrix">
+
+            <!-- Cell 01 : Crimson Lux -->
+            <article class="project-cell">
+              <div class="project-cell-header">
+                <span class="project-cell-id">SYS_01 // PIPELINE</span>
+                <span>PRODUCTION</span>
+              </div>
+              <div class="project-cell-media">
+                <img src="media/logo_crimsonlux.png" alt="Crimson Lux">
+              </div>
+              <div class="project-cell-body">
+                <h3>Crimson Lux</h3>
+                <p>Pipeline d'automatisation IA pour la génération et le traitement d'images avec workflow complet de tri et organisation.</p>
+                <div class="project-cell-footer">
+                  <span class="badge">STABLE DIFFUSION</span>
+                  <a href="crimson-lux.html" class="btn btn-primary">Découvrir</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Cell 02 : Yamino Lux -->
+            <article class="project-cell">
+              <div class="project-cell-header">
+                <span class="project-cell-id">SYS_02 // ART STYLE</span>
+                <span>EXPLORATION</span>
+              </div>
+              <div class="project-cell-media">
+                <img src="media/logo_yaminolux.png" alt="Yamino Lux">
+              </div>
+              <div class="project-cell-body">
+                <h3>Yamino Lux</h3>
+                <p>Déclinaison manga/anime de Crimson Lux, exploration artistique et adaptation stylistique de l'automatisation IA.</p>
+                <div class="project-cell-footer">
+                  <span class="badge">MANGA / ANIME</span>
+                  <a href="yamino-lux.html" class="btn btn-primary">Découvrir</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Cell 03 : Abyssal Dream Records -->
+            <article class="project-cell">
+              <div class="project-cell-header">
+                <span class="project-cell-id">SYS_03 // CREATIVE AI</span>
+                <span>+1M STREAMS</span>
+              </div>
+              <div class="project-cell-media">
+                <img src="media/logo_abyssaldreamrecords.png" alt="Abyssal Dream Records">
+              </div>
+              <div class="project-cell-body">
+                <h3>Abyssal Dream Records</h3>
+                <p>Projet artistique IA combinant musique, visuels et stratégie de réseaux sociaux avec focus sur le storytelling.</p>
+                <div class="project-cell-footer">
+                  <span class="badge">AUDIO &amp; VIDÉO</span>
+                  <a href="abyssal-dream-records.html" class="btn btn-primary">Découvrir</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Cell 04 : Game Translator AI -->
+            <article class="project-cell">
+              <div class="project-cell-header">
+                <span class="project-cell-id">SYS_04 // LOCAL LLM</span>
+                <span>TEST PHASING</span>
+              </div>
+              <div class="project-cell-media">
+                <img src="media/game_translator.png" alt="Game Translator AI">
+              </div>
+              <div class="project-cell-body">
+                <h3>Game Translator AI</h3>
+                <p>Automatisation de la traduction de jeux vidéo Ren'Py par intelligence artificielle et modèles de langage locaux.</p>
+                <div class="project-cell-footer">
+                  <span class="badge">REN'PY / LM STUDIO</span>
+                  <a href="game-translator-ai.html" class="btn btn-primary">Découvrir</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Cell 05 : AI Story Engine -->
+            <article class="project-cell">
+              <div class="project-cell-header">
+                <span class="project-cell-id">SYS_05 // MULTI-AGENTS</span>
+                <span>R&amp;D EXPERIMENTAL</span>
+              </div>
+              <div class="project-cell-media">
+                <img src="media/AI_story_engine.png" alt="AI Story Engine">
+              </div>
+              <div class="project-cell-body">
+                <h3>AI Story Engine</h3>
+                <p>Moteur expérimental de génération narrative multi-agents orchestré en Python avec mémoire structurée en nœuds.</p>
+                <div class="project-cell-footer">
+                  <span class="badge">PYTHON / LLM</span>
+                  <a href="ai-story-engine.html" class="btn btn-primary">Découvrir</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Cell 06 : Télémétrie de fin de matrice pour équilibrer la grille 3x2 -->
+            <div class="project-cell project-cell-system">
+              <div class="project-cell-header">
+                <span class="project-cell-id">SYS_06 // INFRASTRUCTURE</span>
+                <span class="text-accent">ONLINE</span>
+              </div>
+              <div class="system-status-readout">
+                <div class="system-status-title">// DISPONIBLE POUR ALTERNANCE</div>
+                <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0;">
+                  Recherche active d'une alternance en développement IA, automatisation de workflows et intégration de modèles locaux.
+                </p>
+                <div style="border-top: 1px solid var(--border); padding-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.72rem;">
+                  <div><span style="color: var(--accent);">></span> STACK : Python · PyTorch · N8N</div>
+                  <div><span style="color: var(--accent);">></span> DEPLOY : Local LLM · SD · APIs</div>
+                  <div><span style="color: var(--accent);">></span> STATUS : Prêt pour immersion pro</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- 04 / CONTACT SECTION -->
+        <section class="contact-section" id="contact" data-section-name="04 / CONTACT">
+          <div class="section-header-bar">
+            <div><span class="section-num">04</span> / CONTACT &amp; EXPÉDITION</div>
+            <div class="section-meta">COORDONNÉES ET CANAUX PROFESSIONNELS</div>
+          </div>
+
+          <div class="contact-grid">
+            <div class="contact-cell">
+              <div>
+                <span class="contact-cell-tag">// OBJECTIF</span>
+                <h4>Alternance IA</h4>
+                <p>Disponible immédiatement pour intégrer une équipe orientée intelligence artificielle et automatisation.</p>
+              </div>
+              <div style="margin-top: 1.5rem;">
+                <span class="badge badge-accent">DISPONIBLE // 2026</span>
+              </div>
+            </div>
+
+            <div class="contact-cell">
+              <div>
+                <span class="contact-cell-tag">// EXPÉDITION</span>
+                <h4>Projets &amp; Code</h4>
+                <p>Consultez les démonstrations interactives et les architectures détaillées de chaque pipeline.</p>
+              </div>
+              <div style="margin-top: 1.5rem;">
+                <a href="#projets" class="btn btn-outline" style="width: 100%;">Explorer les 5 projets ↑</a>
+              </div>
+            </div>
+
+            <div class="contact-cell">
+              <div>
+                <span class="contact-cell-tag">// ENVIRONNEMENT</span>
+                <h4>100% Local &amp; Dédié</h4>
+                <p>Environnement de travail autonome avec GPU local, modèles auto-hébergés et orchestration Python.</p>
+              </div>
+              <div style="margin-top: 1.5rem;">
+                <span class="badge">SELF-HOSTED STACK</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+          <div class="container" style="padding: 0 1.5rem;">
+            <div class="footer-content">
+              <div class="footer-brand">
+                &copy; 2026 // <span>PORTFOLIO IA &amp; AUTOMATISATION</span> — CONTINUOUS TECHNICAL GRID 2D
+              </div>
+              <ul class="footer-links">
+                <li><a href="#hero">HAUT DE PAGE [↑]</a></li>
+                <li><a href="#about">À PROPOS</a></li>
+                <li><a href="#projets">PROJETS</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+      </div> <!-- /continuous-grid -->
+    </div> <!-- /container -->
+  </main>
 
   <script src="main.js"></script>
 </body>

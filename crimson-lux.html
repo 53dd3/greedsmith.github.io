@@ -2,200 +2,330 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crimson Lux - Pipeline d'Automatisation IA</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crimson Lux // Pipeline d'Automatisation IA</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <a href="index.html" class="logo">Portfolio</a>
-                <nav>
-                    <ul>
-                        <li><a href="index.html">Accueil</a></li>
-                        <li><a href="crimson-lux.html">Crimson Lux</a></li>
-                        <li><a href="yamino-lux.html">Yamino Lux</a></li>
-                        <li><a href="abyssal-dream-records.html">Abyssal Dream Records</a></li>
-                        <li><a href="game-translator-ai.html">Game Translator AI</a></li>
-                        <li><a href="ai-story-engine.html">AI Story Engine</a></li>
-                    </ul>
-                </nav>
-                <div class="nav-actions">
-                    <button class="theme-toggle">☀️ Clair</button>
-                    <button class="hamburger">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                </div>
-            </div>
+  <!-- BACKGROUND CANVAS (Particules interactives conservées) -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- MOBILE TOP PROGRESS LINE -->
+  <div class="mobile-progress-line">
+    <div class="mobile-progress-fill"></div>
+  </div>
+
+  <!-- FULL-HEIGHT VERTICAL PROGRESS RULER -->
+  <aside class="progress-rail" aria-label="Règle de progression verticale">
+    <div class="rail-top">
+      <span class="rail-top-dot"></span>
+      <span>SYS-01</span>
+    </div>
+
+    <div class="rail-scale">
+      <div class="rail-axis"></div>
+      <div class="rail-progress-bar"></div>
+      <div class="rail-indicator">
+        <span class="indicator-pip"></span>
+        <span class="indicator-line"></span>
+      </div>
+      <div class="rail-marks">
+        <div class="rail-mark major" style="top: 0%;"><span>000</span></div>
+        <div class="rail-subtick" style="top: 10%;"></div>
+        <div class="rail-mark major" style="top: 20%;"><span>020</span></div>
+        <div class="rail-subtick" style="top: 30%;"></div>
+        <div class="rail-mark major" style="top: 40%;"><span>040</span></div>
+        <div class="rail-subtick" style="top: 50%;"></div>
+        <div class="rail-mark major" style="top: 60%;"><span>060</span></div>
+        <div class="rail-subtick" style="top: 70%;"></div>
+        <div class="rail-mark major" style="top: 80%;"><span>080</span></div>
+        <div class="rail-subtick" style="top: 90%;"></div>
+        <div class="rail-mark major" style="top: 100%;"><span>100</span></div>
+      </div>
+    </div>
+
+    <div class="rail-section-wrapper">
+      <span class="rail-section-label" id="rail-section">CRIMSON LUX</span>
+    </div>
+
+    <div class="rail-bottom">
+      <div class="rail-percentage">
+        <span id="scroll-pct">000</span><span class="pct-symbol">%</span>
+      </div>
+      <span class="rail-bottom-label">PROGRESSION</span>
+    </div>
+  </aside>
+
+  <!-- HEADER ET NAVIGATION DESKTOP IMPOSANTE -->
+  <header>
+    <div class="container">
+      <div class="header-inner">
+        <div class="header-left">
+          <a href="index.html" class="logo">
+            <span class="logo-indicator"></span>
+            <span>PORTFOLIO</span>
+            <span class="logo-badge">IA &amp; AUTO</span>
+          </a>
         </div>
-        <div class="mobile-menu">
-            <div class="container">
-                <ul>
-                    <li><a href="index.html">Accueil</a></li>
-                    <li><a href="crimson-lux.html">Crimson Lux</a></li>
-                    <li><a href="yamino-lux.html">Yamino Lux</a></li>
-                    <li><a href="abyssal-dream-records.html">Abyssal Dream Records</a></li>
-                    <li><a href="game-translator-ai.html">Game Translator AI</a></li>
-                    <li><a href="ai-story-engine.html">AI Story Engine</a></li>
-                </ul>
-            </div>
+
+        <nav class="header-nav" aria-label="Navigation principale">
+          <ul>
+            <li><a href="index.html">ACCUEIL</a></li>
+            <li><a href="crimson-lux.html" class="active" aria-current="page">CRIMSON LUX</a></li>
+            <li><a href="yamino-lux.html">YAMINO LUX</a></li>
+            <li><a href="abyssal-dream-records.html">ABYSSAL DREAM</a></li>
+            <li><a href="game-translator-ai.html">GAME TRANSLATOR</a></li>
+            <li><a href="ai-story-engine.html">STORY ENGINE</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-right">
+          <div class="header-status">
+            <span class="status-dot"></span>SYS_01 // ACTIVE
+          </div>
+          <button class="hamburger" aria-label="Menu" aria-expanded="false">
+            <span class="hamburger-box">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+            <span class="hamburger-text">MENU</span>
+          </button>
         </div>
-    </header>
+      </div>
+    </div>
 
-    <main>
-        <section class="section">
-            <div class="container">
-                <h1 class="section-title">Crimson Lux</h1>
-                <p style="text-align: center; color: var(--muted); max-width: 800px; margin: 0 auto 3rem;">Pipeline
-                    d'automatisation IA pour la génération, le traitement et l'organisation d'images</p>
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-menu">
+      <div class="container">
+        <ul>
+          <li><a href="index.html">01 // ACCUEIL</a></li>
+          <li><a href="crimson-lux.html" class="active">02 // CRIMSON LUX</a></li>
+          <li><a href="yamino-lux.html">03 // YAMINO LUX</a></li>
+          <li><a href="abyssal-dream-records.html">04 // ABYSSAL DREAM RECORDS</a></li>
+          <li><a href="game-translator-ai.html">05 // GAME TRANSLATOR AI</a></li>
+          <li><a href="ai-story-engine.html">06 // AI STORY ENGINE</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
 
-                <div class="content-grid">
-                    <div class="content-card">
-                        <h3>Contexte</h3>
-                        <p>Crimson Lux est un projet d'automatisation complète du workflow de génération d'images par
-                            IA. L'objectif était de créer un système capable de générer, traiter et organiser
-                            automatiquement des milliers d'images selon des critères prédéfinis.</p>
-                    </div>
+  <main style="padding-top: var(--header-height);">
+    <div class="container">
+      <div class="continuous-grid">
 
-                    <div class="content-card">
-                        <h3>Objectifs</h3>
-                        <ul>
-                            <li>Automatiser la génération d'images via API IA</li>
-                            <li>Implémenter un système de tri intelligent</li>
-                            <li>Organiser automatiquement les fichiers</li>
-                            <li>Optimiser le workflow de production</li>
-                        </ul>
-                    </div>
-
-                    <div class="content-card">
-                        <h3>Compétences</h3>
-                        <ul>
-                            <li>Python (automatisation & scripting)</li>
-                            <li>PowerShell (gestion de fichiers)</li>
-                            <li>APIs IA (génération d'images)</li>
-                            <li>Traitement d'images</li>
-                            <li>Architecture de pipeline</li>
-                        </ul>
-                    </div>
-
-                    <div class="content-card">
-                        <h3>Résultats</h3>
-                        <ul>
-                            <li>Pipeline entièrement automatisé</li>
-                            <li>Gain de temps significatif</li>
-                            <li>Organisation optimale des assets</li>
-                            <li>Système scalable et maintenable</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="workflow-section" style="text-align: center;">
-                    <h2 style="text-align: center; margin-bottom: 2rem;">Workflow d'Automatisation</h2>
-                    <img src="media/workflow.png" alt="Workflow Crimson Lux" style="max-width: 50%; height: auto;">
-                    <img src="media/workflow post twitter.png" alt="Workflow Post Twitter"
-                        style="max-width: 50%; height: auto; margin-top: 2rem;">
-                </div>
-
-                <div class="section">
-                    <h2 style="text-align: center; margin-bottom: 2rem;">Vision & Architecture</h2>
-                    <p style="text-align: center; color: var(--muted); max-width: 800px; margin: 0 auto 2rem;">
-                        Pipeline industrialisé de bout en bout pour la génération, le traitement et la distribution de
-                        contenu IA
-                    </p>
-
-                    <div class="content-grid">
-                        <div class="content-card">
-                            <h3>Architecture du Pipeline</h3>
-                            <ul>
-                                <li>Collecte de prompts depuis Civitai</li>
-                                <li>Nettoyage et standardisation via IA</li>
-                                <li>Génération d'images avec Stable Diffusion </li>
-                                <li>Classification automatique (metadata, SFW/NSFW)</li>
-                                <li>Publication multi-plateformes via N8N</li>
-                                <li>Base de données centralisée (googledrive/sheets)</li>
-                            </ul>
-                        </div>
-
-                        <div class="content-card">
-                            <h3>Ce que ce projet démontre</h3>
-                            <ul>
-                                <li>Conception d'architecture système scalable</li>
-                                <li>Orchestration d'outils IA et automatisation</li>
-                                <li>Intégration multi-API (génération, publication, stockage)</li>
-                                <li>Gestion de workflows end-to-end</li>
-                                <li>Approche orientée amélioration continue</li>
-                            </ul>
-                        </div>
-
-                        <div class="content-card">
-                            <h3>Pistes d'amélioration</h3>
-                            <ul>
-                                <li>Système de scoring automatique des prompts</li>
-                                <li>Classification custom par style artistique</li>
-                                <li>Orchestrateur IA pour optimisation du pipeline</li>
-                                <li>Dashboard analytics en temps réel</li>
-                                <li>Génération de vidéos (reels automatisés)</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div style="text-align: center; margin-top: 2rem;">
-                        <a href="media/crimson_lux_mindmap_dark.html" target="_blank" rel="noopener noreferrer"
-                            class="btn btn-secondary" style="font-size: 0.9rem;">
-                            📋 Voir la mindmap complète
-                        </a>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <h2 style="text-align: center; margin-bottom: 2rem;">Script de Tri Automatique</h2>
-                    <div class="content-card">
-                        <img src="media/fichier_trie_ps1.png" alt="Script PowerShell de tri"
-                            style="max-width: 50%; height: auto;">
-                        <p style="margin-top: 1rem; color: var(--muted);">Script PowerShell pour l'organisation
-                            automatique des fichiers générés</p>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <h2 style="text-align: center; margin-bottom: 2rem;">Avant / Après</h2>
-                    <div class="comparison">
-                        <div class="comparison-item">
-                            <img src="media/avant.png" alt="Avant automatisation">
-                            <h4>Avant</h4>
-                            <p style="color: var(--muted);">Résultat de prompt brut de civiai</p>
-                        </div>
-                        <div class="comparison-item">
-                            <img src="media/apres.png" alt="Après automatisation">
-                            <h4>Après</h4>
-                            <p style="color: var(--muted);">Résultat apres normalisation et ajouts des personnages
-                                automatique, structure optimisée</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div style="text-align: center; margin-top: 3rem;">
-                    <a href="index.html" class="btn btn-secondary">← Retour aux projets</a>
-                </div>
-            </div>
+        <!-- 01 / OVERVIEW — HERO PROJET -->
+        <section class="page-hero" id="overview" data-section-name="01 / OVERVIEW">
+          <div class="page-hero-meta">
+            <span class="badge badge-accent">SYS_01 // PIPELINE IA</span>
+            <span class="badge">STABLE DIFFUSION</span>
+            <span class="badge">PYTHON · POWERSHELL · N8N</span>
+          </div>
+          <h1>Crimson Lux</h1>
+          <p class="page-hero-sub">
+            Pipeline d'automatisation IA pour la génération, le traitement et l'organisation d'images à grande échelle.
+          </p>
+          <div class="page-hero-tags">
+            <span class="badge badge-outline">STATUT : DÉPLOYÉ EN PRODUCTION</span>
+            <span class="badge badge-outline">TRI AUTOMATISÉ</span>
+            <span class="badge badge-outline">MULTI-API WORKFLOW</span>
+          </div>
         </section>
-    </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Portfolio IA & Automatisation</p>
-        </div>
-    </footer>
+        <!-- 02 / SPECS — SPÉCIFICATIONS FONCTIONNELLES -->
+        <section class="section" id="specs" data-section-name="02 / SPECS">
+          <div class="section-header-bar">
+            <div><span class="section-num">02</span> / SPÉCIFICATIONS FONCTIONNELLES</div>
+            <div class="section-meta">ARCHITECTURE MODULAIRE &amp; RÉSULTATS</div>
+          </div>
 
-    <script src="main.js"></script>
+          <div class="content-matrix">
+            <div class="content-cell">
+              <span class="content-cell-tag">// 01. CONTEXTE</span>
+              <h3>Contexte du système</h3>
+              <p>
+                Crimson Lux est un projet d'automatisation complète du workflow de génération d'images par IA.
+                L'objectif était de créer un système capable de générer, traiter et organiser automatiquement
+                des milliers d'images selon des critères prédéfinis.
+              </p>
+            </div>
+
+            <div class="content-cell">
+              <span class="content-cell-tag">// 02. OBJECTIFS</span>
+              <h3>Objectifs techniques</h3>
+              <ul>
+                <li>Automatiser la génération d'images via API IA</li>
+                <li>Implémenter un système de tri intelligent</li>
+                <li>Organiser automatiquement les fichiers</li>
+                <li>Optimiser le workflow de production</li>
+              </ul>
+            </div>
+
+            <div class="content-cell">
+              <span class="content-cell-tag">// 03. COMPÉTENCES</span>
+              <h3>Technologies mobilisées</h3>
+              <ul>
+                <li>Python (automatisation &amp; scripting)</li>
+                <li>PowerShell (gestion de fichiers et tri batch)</li>
+                <li>APIs IA (génération d'images haute résolution)</li>
+                <li>Traitement et filtrage d'images</li>
+                <li>Architecture de pipeline end-to-end</li>
+              </ul>
+            </div>
+
+            <div class="content-cell">
+              <span class="content-cell-tag">// 04. RÉSULTATS</span>
+              <h3>Résultats obtenus</h3>
+              <ul>
+                <li>Pipeline entièrement automatisé sans intervention manuelle</li>
+                <li>Gain de temps significatif sur la chaîne graphique</li>
+                <li>Organisation optimale et indexation des assets</li>
+                <li>Système scalable et maintenable dans le temps</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 03 / WORKFLOW D'AUTOMATISATION -->
+        <section class="section" id="workflow" data-section-name="03 / WORKFLOW">
+          <div class="section-header-bar">
+            <div><span class="section-num">03</span> / WORKFLOW D'AUTOMATISATION</div>
+            <div class="section-meta">LOGIGRAMME D'EXÉCUTION ET DISTRIBUTION</div>
+          </div>
+
+          <div class="workflow-box">
+            <p style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); margin-bottom: 1rem;">
+              [DIAGRAMME 01] — FLUX DE GÉNÉRATION ET TRAITEMENT
+            </p>
+            <img src="media/workflow.png" alt="Workflow Crimson Lux" style="max-width: 90%; height: auto;">
+
+            <div style="height: 1px; background: var(--border); margin: 2rem 0;"></div>
+
+            <p style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); margin-bottom: 1rem;">
+              [DIAGRAMME 02] — PIPELINE DE DISTRIBUTION MULTI-CANAL
+            </p>
+            <img src="media/workflow post twitter.png" alt="Workflow Post Twitter" style="max-width: 90%; height: auto;">
+          </div>
+        </section>
+
+        <!-- 04 / VISION & ARCHITECTURE SYSTÈME -->
+        <section class="section" id="architecture" data-section-name="04 / ARCHITECTURE">
+          <div class="section-header-bar">
+            <div><span class="section-num">04</span> / VISION &amp; ARCHITECTURE SYSTÈME</div>
+            <div class="section-meta">INDUSTRIALISATION DE BOUT EN BOUT</div>
+          </div>
+
+          <div class="content-matrix" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+            <div class="content-cell">
+              <span class="content-cell-tag">// INFRASTRUCTURE</span>
+              <h3>Architecture du Pipeline</h3>
+              <ul>
+                <li>Collecte de prompts depuis Civitai</li>
+                <li>Nettoyage et standardisation via IA</li>
+                <li>Génération d'images avec Stable Diffusion</li>
+                <li>Classification automatique (metadata, SFW/NSFW)</li>
+                <li>Publication multi-plateformes via N8N</li>
+                <li>Base de données centralisée (Google Drive / Sheets)</li>
+              </ul>
+            </div>
+
+            <div class="content-cell">
+              <span class="content-cell-tag">// VALIDATION</span>
+              <h3>Ce que ce projet démontre</h3>
+              <ul>
+                <li>Conception d'architecture système scalable</li>
+                <li>Orchestration d'outils IA et automatisation</li>
+                <li>Intégration multi-API (génération, publication, stockage)</li>
+                <li>Gestion de workflows end-to-end</li>
+                <li>Approche orientée amélioration continue</li>
+              </ul>
+            </div>
+
+            <div class="content-cell" style="border-right: none;">
+              <span class="content-cell-tag">// ROADMAP</span>
+              <h3>Pistes d'amélioration</h3>
+              <ul>
+                <li>Système de scoring automatique des prompts</li>
+                <li>Classification custom par style artistique</li>
+                <li>Orchestrateur IA pour optimisation du pipeline</li>
+                <li>Dashboard analytics en temps réel</li>
+                <li>Génération de vidéos (reels automatisés)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div style="padding: 2rem; text-align: center; border-bottom: 1px solid var(--border);">
+            <a href="media/crimson_lux_mindmap_dark.html" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+              📋 Voir la mindmap complète
+            </a>
+          </div>
+        </section>
+
+        <!-- 05 / TRI ET AVANT/APRÈS -->
+        <section class="section" id="benchmarks" data-section-name="05 / BENCHMARKS">
+          <div class="section-header-bar">
+            <div><span class="section-num">05</span> / TRI AUTOMATIQUE &amp; BENCHMARK VISUEL</div>
+            <div class="section-meta">ORGANISATION BATCH ET NORMALISATION</div>
+          </div>
+
+          <div class="workflow-box">
+            <h3 style="font-size: 1.1rem; margin-bottom: 1rem;">Script de Tri Automatique PowerShell</h3>
+            <img src="media/fichier_trie_ps1.png" alt="Script PowerShell de tri" style="max-width: 80%; height: auto;">
+            <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.88rem;">
+              Script PowerShell pour l'organisation et la classification automatique des fichiers générés
+            </p>
+          </div>
+
+          <div class="comparison-grid">
+            <div class="comparison-cell">
+              <div class="comparison-cell-header">
+                <span>AVANT // BRUT</span>
+                <span>NON NORMALISÉ</span>
+              </div>
+              <img src="media/avant.png" alt="Avant automatisation">
+              <p style="color: var(--text-muted); font-size: 0.85rem;">Résultat de prompt brut de Civitai sans contrôle de cohérence</p>
+            </div>
+
+            <div class="comparison-cell">
+              <div class="comparison-cell-header">
+                <span style="color: var(--accent);">APRÈS // NORMALISÉ</span>
+                <span style="color: var(--accent);">STRUCTURE OPTIMISÉE</span>
+              </div>
+              <img src="media/apres.png" alt="Après automatisation">
+              <p style="color: var(--text-muted); font-size: 0.85rem;">Résultat après normalisation et ajouts des personnages automatique, structure optimisée</p>
+            </div>
+          </div>
+
+          <div style="padding: 2.5rem; text-align: center;">
+            <a href="index.html#projets" class="btn btn-outline">← Retour aux projets</a>
+          </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+          <div class="container" style="padding: 0 1.5rem;">
+            <div class="footer-content">
+              <div class="footer-brand">
+                &copy; 2026 // <span>PORTFOLIO IA &amp; AUTOMATISATION</span> — CRIMSON LUX
+              </div>
+              <ul class="footer-links">
+                <li><a href="index.html">ACCUEIL</a></li>
+                <li><a href="yamino-lux.html">PROJET SUIVANT →</a></li>
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+      </div> <!-- /continuous-grid -->
+    </div> <!-- /container -->
+  </main>
+
+  <script src="main.js"></script>
 </body>
 
 </html>

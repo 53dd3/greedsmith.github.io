@@ -305,4 +305,80 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* --------------------------------------------------
+     8. ANTI-SCRAPING CONTACT INJECTION & CLIPBOARD COPY
+  -------------------------------------------------- */
+  const emailLink = document.getElementById('contact-email-link');
+  const phoneLink = document.getElementById('contact-phone-link');
+
+  if (emailLink || phoneLink) {
+    // Obfuscated assembly: greed.smith@hotmail.fr
+    const emUser = ['g', 'r', 'e', 'e', 'd', '.', 's', 'm', 'i', 't', 'h'].join('');
+    const emDomain = ['h', 'o', 't', 'm', 'a', 'i', 'l', '.', 'f', 'r'].join('');
+    const fullEmail = `${emUser}@${emDomain}`;
+
+    // Obfuscated assembly: 06 81 85 85 73
+    const phDigits = ['06', '81', '85', '85', '73'];
+    const displayPhone = phDigits.join(' ');
+    const dialPhone = '+33' + phDigits.join('').slice(1);
+
+    if (emailLink) {
+      emailLink.textContent = fullEmail;
+      emailLink.href = `mailto:${fullEmail}`;
+      emailLink.setAttribute('aria-label', `Envoyer un email à ${fullEmail}`);
+    }
+
+    if (phoneLink) {
+      phoneLink.textContent = displayPhone;
+      phoneLink.href = `tel:${dialPhone}`;
+      phoneLink.setAttribute('aria-label', `Appeler le ${displayPhone}`);
+    }
+
+    document.querySelectorAll('.btn-copy').forEach(btn => {
+      btn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const copyType = btn.getAttribute('data-copy-target');
+        const textToCopy = copyType === 'email' ? fullEmail : displayPhone;
+
+        const updateStatus = () => {
+          const originalText = btn.innerHTML;
+          btn.innerHTML = '<span>✓</span> Copié !';
+          btn.classList.add('copied');
+          setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.classList.remove('copied');
+          }, 2000);
+        };
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          try {
+            await navigator.clipboard.writeText(textToCopy);
+            updateStatus();
+          } catch (err) {
+            fallbackCopy(textToCopy, updateStatus);
+          }
+        } else {
+          fallbackCopy(textToCopy, updateStatus);
+        }
+      });
+    });
+
+    function fallbackCopy(text, callback) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        callback();
+      } catch (err) {
+        console.error('Fallback copy failed', err);
+      }
+      document.body.removeChild(ta);
+    }
+  }
+
 });

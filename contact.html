@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact // Anthony Roudaut — Builder IA</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body class="contact-page">
+  <!-- BACKGROUND CANVAS (Particules interactives conservées) -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- HEADER ET NAVIGATION DESKTOP -->
+  <header>
+    <div class="container">
+      <div class="header-inner">
+        <div class="header-left">
+          <a href="index.html" class="logo">
+            <span class="logo-indicator"></span>
+            <span>PORTFOLIO</span>
+            <span class="logo-badge">IA &amp; AUTO</span>
+          </a>
+        </div>
+
+        <nav class="header-nav" aria-label="Navigation principale">
+          <ul>
+            <li><a href="index.html">ACCUEIL</a></li>
+            <li><a href="index.html#about">À PROPOS</a></li>
+            <li><a href="index.html#projets">PROJETS</a></li>
+            <li><a href="index.html#experience">EXPÉRIENCE</a></li>
+            <li><a href="contact.html" class="active" aria-current="page">CONTACT</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-right">
+          <div class="header-status">
+            <span class="status-dot"></span>SYS // ONLINE
+          </div>
+          <button class="hamburger" aria-label="Menu des projets" aria-expanded="false">
+            <span class="hamburger-box">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+            <span class="hamburger-text">MENU</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tiroir secondaire & Mobile Menu -->
+    <div class="mobile-menu">
+      <div class="container">
+        <ul>
+          <li><a href="index.html">01 // ACCUEIL PRINCIPAL</a></li>
+          <li><a href="crimson-lux.html">02 // CRIMSON LUX — PIPELINE STABLE DIFFUSION</a></li>
+          <li><a href="yamino-lux.html">03 // YAMINO LUX — DÉCLINAISON MANGA/ANIME</a></li>
+          <li><a href="abyssal-dream-records.html">04 // ABYSSAL DREAM RECORDS — +1M STREAMS</a></li>
+          <li><a href="game-translator-ai.html">05 // GAME TRANSLATOR AI — LOCAL LLM</a></li>
+          <li><a href="ai-story-engine.html">06 // AI STORY ENGINE — MULTI-AGENTS</a></li>
+          <li><a href="contact.html" class="active">07 // CONTACT &amp; COORDONNÉES</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- CARTE DE VISITE DIGITALE / HUD BENTO COMPACT -->
+    <section class="hud-card" aria-label="Carte de visite professionnelle">
+
+      <!-- EN-TÊTE DE CARTE -->
+      <div class="hud-card-header">
+        <span class="hud-status-badge">
+          <span class="status-dot"></span>DISPONIBLE — ALTERNANCE BUILDER IA (4J ENTREPRISE / 1J FORMATION)
+        </span>
+        <span class="hud-card-id">CARD // ID_01</span>
+      </div>
+
+      <!-- CORPS DE CARTE -->
+      <div class="hud-card-body">
+
+        <!-- ZONE IDENTITÉ -->
+        <div class="hud-identity">
+          <div class="avatar-frame">
+            <img src="media/profil.webp" alt="Anthony Roudaut" class="avatar-img"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="avatar-fallback" style="display: none;">AR</div>
+          </div>
+          <div class="identity-text">
+            <h2>Anthony Roudaut</h2>
+            <div class="identity-title">Développeur Informatique — Spécialisation Builder IA</div>
+            <p class="identity-bio">
+              Ancien technicien industriel reconverti dans le développement assisté par IA.
+              Je conçois des workflows automatisés et des outils sur-mesure orientés production.
+            </p>
+          </div>
+        </div>
+
+        <!-- ZONE COORDONNÉES & ACTIONS RAPIDES -->
+        <div class="hud-coords-grid">
+
+          <!-- Localisation -->
+          <div class="coord-row">
+            <span class="coord-label">// LOCALISATION &amp; MOBILITÉ</span>
+            <div class="coord-content">
+              <span class="coord-val">Plomelin (29700) — Quimper &amp; Finistère (Permis B+véhicule)</span>
+              <span class="badge badge-outline" style="font-size: 0.62rem; padding: 0.15rem 0.5rem;">FINISTÈRE
+                (29)</span>
+            </div>
+          </div>
+
+          <!-- Email (Injecté en JS - Anti-scraping) -->
+          <div class="coord-row">
+            <span class="coord-label">// EMAIL PROFESSIONNEL</span>
+            <div class="coord-content">
+              <span class="coord-val">
+                <a id="contact-email-link" href="#">Initialisation...</a>
+              </span>
+              <button type="button" class="btn-copy" data-copy-target="email" aria-label="Copier l'adresse email">
+                Copier
+              </button>
+            </div>
+          </div>
+
+          <!-- Téléphone (Injecté en JS - Anti-scraping) -->
+          <div class="coord-row">
+            <span class="coord-label">// TÉLÉPHONE DIRECT</span>
+            <div class="coord-content">
+              <span class="coord-val">
+                <a id="contact-phone-link" href="#">Initialisation...</a>
+              </span>
+              <button type="button" class="btn-copy" data-copy-target="phone"
+                aria-label="Copier le numéro de téléphone">
+                Copier
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- PIED DE CARTE -->
+      <div class="hud-card-footer">
+        <a href="index.html" class="card-back-btn">← Retour au portfolio</a>
+        <span class="card-crypto-tag">SECURE // ANTI-SCRAPING ACTIVE</span>
+      </div>
+
+    </section>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+
+</html>
